@@ -16,53 +16,96 @@ body{
 }
 
 
-header{
+/* Navigation */
 
+nav{
     background:#050505;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+}
+
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
     color:white;
-    text-align:center;
-    padding:30px;
+    text-decoration:none;
+    font-size:30px;
+    font-weight:bold;
+}
+
+
+.logo img{
+    height:55px;
+}
+
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+}
+
+
+
+/* Contact */
+
+.contact{
+
+text-align:center;
+padding:70px 20px;
 
 }
 
 
-.contact{
+.contact h1{
 
-    text-align:center;
-    padding:50px 20px;
+font-size:45px;
+
+}
+
+
+.contact span{
+
+color:#00AEEF;
 
 }
 
 
 .box{
 
-    background:white;
-    max-width:400px;
-    margin:auto;
-    padding:30px;
-    border-radius:15px;
+background:white;
+max-width:500px;
+margin:auto;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 25px #ddd;
 
 }
 
 
-button{
+.box p{
 
-    background:#00aaff;
-    color:white;
-    border:none;
-    padding:15px 30px;
-    border-radius:30px;
-    font-size:16px;
+font-size:18px;
 
 }
 
 
-a{
+.btn{
 
-    text-decoration:none;
-    color:#0077cc;
+display:inline-block;
+background:#00AEEF;
+color:white;
+padding:15px 35px;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
 
 }
+
 
 </style>
 
@@ -72,17 +115,37 @@ a{
 <body>
 
 
-<header>
+<nav>
 
-<h1>Contact Nexvora</h1>
 
-<p>Powering Your Next Connection</p>
+<a href="index.html" class="logo">
 
-</header>
+<img src="nex.png">
+
+<span>NEXVORA</span>
+
+</a>
+
+
+<div>
+
+<a href="index.html">Home</a>
+
+<a href="categories.html">Products</a>
+
+<a href="contact.html">Contact</a>
+
+</div>
+
+
+</nav>
 
 
 
 <section class="contact">
+
+
+<h1>Contact <span>Nexvora</span></h1>
 
 
 <div class="box">
@@ -91,19 +154,30 @@ a{
 <h2>Get In Touch</h2>
 
 
-<p>📱 WhatsApp: Your Number</p>
+<p>📧 Email</p>
 
-<p>📧 Email: nexvora@gmail.com</p>
+<p>
+nexvoraofficial123@gmail.com
+</p>
 
-<p>📍 Delivery: Islandwide Sri Lanka</p>
+
+<p>📱 WhatsApp</p>
+
+<p>
++94 XX XXX XXXX
+</p>
 
 
+<p>🚚 Delivery</p>
 
-<button>
+<p>
+Islandwide Delivery Across Sri Lanka
+</p>
 
-Order Now
 
-</button>
+<a href="https://wa.me/947XXXXXXXX" class="btn">
+Chat on WhatsApp
+</a>
 
 
 </div>
