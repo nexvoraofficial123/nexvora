@@ -69,33 +69,56 @@ nav a{
 /* Hero */
 
 .hero{
-    background:#050505;
+    background:linear-gradient(135deg,#050505,#1b1b1b);
     color:white;
     text-align:center;
-    padding:80px 20px;
+    padding:120px 20px;
 }
-
 
 .hero h1{
-    font-size:55px;
-    margin-bottom:10px;
+    font-size:60px;
+    margin-bottom:20px;
+    font-weight:700;
 }
-
 
 .hero span{
     color:#00aaff;
 }
 
-
-.hero button{
-    background:#00aaff;
-    color:white;
-    border:none;
-    padding:15px 35px;
-    border-radius:30px;
-    font-size:18px;
+.hero p{
+    max-width:700px;
+    margin:0 auto 40px;
+    font-size:20px;
+    line-height:1.7;
+    color:#d9d9d9;
 }
 
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn-primary,
+.btn-secondary{
+    display:inline-block;
+    padding:15px 35px;
+    border-radius:40px;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.btn-primary{
+    background:#00aaff;
+    color:white;
+}
+
+.btn-secondary{
+    border:2px solid white;
+    color:white;
+}
 
 /* Products */
 
