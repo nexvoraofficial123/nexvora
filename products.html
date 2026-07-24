@@ -9,11 +9,47 @@
 
 <style>
 
-body{
-font-family:Arial;
-margin:0;
-background:#f4f7fb;
+ .topbar{
+    background:#00AEEF;
+    color:white;
+    text-align:center;
+    padding:10px;
+    font-size:14px;
+    font-weight:bold;
 }
+
+nav{
+    background:#050505;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    font-size:30px;
+    font-weight:bold;
+    color:white;
+}
+
+.logo img{
+    height:55px;
+    width:auto;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#00AEEF;
+}   
 
 
 header{
@@ -35,6 +71,26 @@ padding:40px;
 
 }
 
+/* Paste this below */
+
+.card{
+    background:white;
+    width:240px;
+    margin:20px;
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+.card h3{
+    color:#0077CC;
+}
 
 .card button{
     background:#00AEEF;
@@ -52,9 +108,7 @@ padding:40px;
 }
 
 .card img{
-
-border-radius:10px;
-
+    border-radius:10px;
 }
 body{
     margin:0;
@@ -72,6 +126,25 @@ body{
 
 <body>
 
+
+<div class="topbar">
+🚚 FREE ISLANDWIDE DELIVERY | 🔒 SECURE SHOPPING | ⭐ PREMIUM QUALITY
+</div>
+
+<nav>
+
+<div class="logo">
+    <img src="nex.png" alt="Nexvora Logo">
+    <span>NEXVORA</span>
+</div>
+
+<div>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+</nav>
 
 <header>
 
@@ -189,7 +262,6 @@ body{
   
 
 </section>
-
 
 </body>
 
