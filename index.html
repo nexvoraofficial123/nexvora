@@ -9,307 +9,565 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
- <style>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+
+html{
+scroll-behavior:smooth;
+}
+
 
 body{
-    margin:0;
-    font-family:'Montserrat', sans-serif;
-}
-  
-.card button{
-    background:#050505;
-    color:white;
-    border:none;
-    padding:12px 25px;
-    border-radius:30px;
-    cursor:pointer;
-    font-weight:bold;
-    width:100%;
+
+font-family:'Montserrat',sans-serif;
+color:#111;
+
 }
 
-.card button:hover{
-    background:#00AEEF;
-}
 
-.card img{
-    width:100%;
-    border-radius:10px;
-    transition:0.3s;
-}
-
-.card:hover img{
-    transform:scale(1.05);
-}
-
-/* Paste here */
+/* TOP BAR */
 
 .topbar{
-    background:#00AEEF;
-    color:white;
-    text-align:center;
-    padding:10px;
-    font-size:14px;
-    font-weight:bold;
+
+background:#00AEEF;
+color:white;
+text-align:center;
+padding:10px;
+font-weight:bold;
+font-size:14px;
+
 }
 
-/* Navigation */
+
+
+/* NAVIGATION */
 
 nav{
-    background:#050505;
-    color:white;
-    padding:20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+
+background:#050505;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+
 }
+
 
 .logo{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    font-size:32px;
-    font-weight:800;
- text-decoration:none;
-    letter-spacing:1px;
-    color:white;
+
+display:flex;
+align-items:center;
+gap:15px;
+color:white;
+font-size:32px;
+font-weight:800;
+text-decoration:none;
+
 }
+
 
 .logo img{
-    height:55px;
-    width:auto;
-    display:block;
+
+height:55px;
+
 }
+
+
 
 nav a{
-    color:white;
-    text-decoration:none;
-    margin-left:30px;
-    font-weight:600;
-    font-size:16px;
-    transition:0.3s;
+
+color:white;
+text-decoration:none;
+margin-left:25px;
+font-weight:600;
+
 }
+
 
 nav a:hover{
-    color:#00AEEF;
+
+color:#00AEEF;
+
 }
 
 
-/* Hero */
+
+/* HERO */
 
 .hero{
-    background:
-    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-    url("https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1600&q=80");
 
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
+background:
 
-    color:white;
-    text-align:center;
-    padding:140px 20px;
+linear-gradient(
+rgba(0,0,0,.65),
+rgba(0,0,0,.65)
+),
+
+url("images/technology.jpg");
+
+
+background-size:cover;
+background-position:center;
+
+color:white;
+text-align:center;
+
+padding:140px 20px;
+
 }
+
+
 
 .hero h1{
-    font-size:72px;
-    font-weight:800;
-    line-height:1.1;
-    margin-bottom:20px;
+
+font-size:72px;
+font-weight:800;
+
 }
+
 
 .hero span{
-    color:#00AEEF;
+
+color:#00AEEF;
+
 }
+
 
 .hero p{
-    font-size:20px;
-    max-width:650px;
-    margin:20px auto 40px;
-    line-height:1.8;
-    color:#f2f2f2;
+
+font-size:20px;
+max-width:650px;
+margin:25px auto 40px;
+line-height:1.7;
+
 }
+
 
 .btn{
-    display:inline-block;
-    background:#00AEEF;
-    color:white;
-    padding:15px 35px;
-    text-decoration:none;
-    border-radius:30px;
-    font-size:16px;
-    font-weight:700;
-    transition:0.3s;
+
+background:#00AEEF;
+color:white;
+padding:15px 35px;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+
 }
+
 
 .btn:hover{
-    background:#0077CC;
-    transform:translateY(-2px);
+
+background:#0077CC;
+
 }
 
-/* Products */
+
+
+
+/* PRODUCTS */
 
 .section{
-    padding:50px 20px;
-    text-align:center;
+
+padding:60px 8%;
+text-align:center;
+
 }
+
+
+.section h2{
+
+font-size:35px;
+margin-bottom:40px;
+
+}
+
 
 
 .products{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+
 }
+
 
 
 .card{
-    background:white;
-    width:240px;
-    margin:20px;
- overflow:hidden;
-    padding:20px;
-    border-radius:18px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    transition:0.3s;
+
+background:white;
+padding:20px;
+border-radius:18px;
+
+box-shadow:
+0 10px 25px rgba(0,0,0,.1);
+
+transition:.3s;
+
 }
+
+
 
 .card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+
+transform:translateY(-8px);
+
 }
 
 
-/* Why choose */
+
+.card img{
+
+width:100%;
+border-radius:10px;
+
+}
+
+
+
+.card button,
+.order-btn{
+
+display:block;
+width:100%;
+
+background:#050505;
+color:white;
+
+padding:12px;
+
+border-radius:30px;
+
+text-decoration:none;
+
+border:none;
+
+font-weight:bold;
+
+margin-top:15px;
+
+}
+
+
+
+.order-btn:hover,
+.card button:hover{
+
+background:#00AEEF;
+
+}
+
+
+
+
+/* WHY SECTION */
+
 
 .why{
 
 background:#050505;
 color:white;
+
+padding:60px 8%;
 text-align:center;
-padding:50px 20px;
 
 }
 
-/* NEW CODE STARTS HERE */
+
 
 .features{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:25px;
-    margin-top:40px;
+
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+
+margin-top:40px;
+
 }
+
+
 
 .feature{
-    background:white;
-    color:#111;
-    width:250px;
-    padding:25px;
-    border-radius:18px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.1);
-    transition:0.3s;
+
+background:white;
+color:#111;
+
+width:250px;
+
+padding:25px;
+
+border-radius:18px;
+
 }
 
-.feature:hover{
-    transform:translateY(-8px);
-}
+
+
 
 .feature h3{
-    color:#00AEEF;
+
+color:#00AEEF;
+
 }
 
-    .feature img{
-    width:80px;
-    height:80px;
-    object-fit:contain;
-    margin-bottom:15px;
-}
-    
-/* Footer */
+
+
+/* FOOTER */
+
 
 footer{
-    background:#050505;
-    color:white;
-    text-align:center;
-    padding:50px 20px;
+
+background:#000;
+color:white;
+text-align:center;
+padding:40px;
+
 }
+
 
 footer h2{
-    color:#00AEEF;
-    margin-bottom:10px;
+
+color:#00AEEF;
+
 }
+
+
 
 footer p{
-    color:#cccccc;
-    margin:8px 0;
+
+margin:10px;
+
+color:#ccc;
+
 }
 
 
-@media(max-width:600px){
 
-.hero h1{
-font-size:40px;
+
+/* RESPONSIVE */
+
+
+@media(max-width:1000px){
+
+
+.products{
+
+grid-template-columns:repeat(2,1fr);
+
 }
+
+}
+
+
+
+
+@media(max-width:768px){
+
 
 nav{
-display:block;
+
+flex-direction:column;
+gap:20px;
 text-align:center;
-}
 
 }
+
+
+nav a{
+
+display:inline-block;
+margin:10px;
+
+}
+
+
+
+.logo{
+
+font-size:28px;
+
+}
+
+
+.logo img{
+
+height:45px;
+
+}
+
+
+
+.hero{
+
+padding:90px 20px;
+
+}
+
+
+
+.hero h1{
+
+font-size:42px;
+
+}
+
+
+
+.hero p{
+
+font-size:16px;
+
+}
+
+
+
+.products{
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.card{
+
+width:90%;
+margin:auto;
+
+}
+
+
+
+.features{
+
+flex-direction:column;
+align-items:center;
+
+}
+
+
+
+.feature{
+
+width:90%;
+
+}
+
+
+}
+
 
 </style>
+
 
 </head>
 
 
+
 <body>
 
+
+
 <div class="topbar">
+
 🚚 Islandwide Delivery | ⭐ Premium Quality | 💳 Cash on Delivery Available
+
 </div>
 
-<nav>    
+
+
+<nav>
+
 
 <a href="index.html" class="logo">
-    <img src="nex.png" alt="Nexvora Logo">
-    <span>NEXVORA</span>
+
+<img src="nex.png">
+
+<span>NEXVORA</span>
+
 </a>
 
+
+
 <div>
+
 <a href="index.html">Home</a>
+
 <a href="categories.html">Shop</a>
+
 <a href="contact.html">Contact</a>
-<a href="aboutus.html">About us</a>
- 
+
+<a href="aboutus.html">About Us</a>
+
+
 </div>
+
 
 </nav>
 
 
 
+
+
 <section class="hero">
 
-    <h1>Power Every <span>Connection</span></h1>
 
-    <p>
-        Discover premium phone accessories designed for speed,
-        reliability, and everyday performance.
-    </p>
+<h1>
 
-    <a href="products.html" class="btn">TOP DEALS</a>
+Powering Your <span>Next Connection</span>
+
+</h1>
+
+
+
+<p>
+
+Discover premium phone accessories designed for speed,
+reliability and everyday performance.
+
+</p>
+
+
+<a href="categories.html" class="btn">
+
+TOP DEALS
+
+</a>
+
+
 
 </section>
 
 
-<section id="products" class="section">
 
-<h2>Featured Products</h2>
+
+
+
+<section class="section">
+
+
+<h2>
+
+Featured Products
+
+</h2>
+
+
 
 <div class="products">
 
+
+
 <div class="card">
 
-<img src="https://via.placeholder.com/240x200" width="100%">
+<img src="images/charger.jpg">
 
 <h3>Nexvora Fast Charger</h3>
 
@@ -317,135 +575,215 @@ text-align:center;
 
 <h3>Rs. 3,490</h3>
 
-<button>Order Now</button>
+<a href="product-details.html" class="order-btn">
+
+Order Now
+
+</a>
 
 </div>
 
 
+
+
+
 <div class="card">
 
-<img src="https://via.placeholder.com/220x180" width="100%">
+
+<img src="images/earbuds.jpg">
 
 <h3>Nexvora Wireless Earbuds</h3>
 
-<p>Premium sound experience</p>
+<p>Premium Sound Experience</p>
 
 <h3>Rs. 4,990</h3>
 
-<button>Order Now</button>
+<a href="product-details.html" class="order-btn">
+
+Order Now
+
+</a>
+
 
 </div>
 
-<div class="card">
 
-<img src="https://via.placeholder.com/220x180" width="100%">
 
-<h3>Nexvora Wireless Earbuds</h3>
 
-<p>Premium sound experience</p>
 
-<h3>Rs. 4,900</h3>
-
-<button>Order Now</button>
-
-</div>
 
 <div class="card">
 
-<img src="https://via.placeholder.com/220x180" width="100%">
-
-<h3>Nexvora Wireless Earbuds</h3>
-
-<p>Premium sound experience</p>
-
-<h3>Rs. 4,90</h3>
-
-<button>Order Now</button>
-
-</div>    
-    
-<div class="card">
-
-<img src="https://via.placeholder.com/220x180" width="100%">
+<img src="images/powerbank.jpg">
 
 <h3>Nexvora Power Bank</h3>
 
-<p>Long lasting portable power</p>
+<p>Long Lasting Portable Power</p>
 
 <h3>Rs. 5,990</h3>
 
-<button>Order Now</button>
+<a href="product-details.html" class="order-btn">
+
+Order Now
+
+</a>
+
 
 </div>
+
+
+
+
 
 
 <div class="card">
 
-<img src="https://via.placeholder.com/220x180" width="100%">
+
+<img src="images/case.jpg">
+
 
 <h3>Premium Phone Case</h3>
 
-<p>Protection with modern style</p>
+<p>Protection With Modern Style</p>
 
 <h3>Rs. 1,490</h3>
 
-<button>Order Now</button>
+
+<a href="product-details.html" class="order-btn">
+
+Order Now
+
+</a>
+
 
 </div>
 
+
+
+
 </div>
+
 
 </section>
+
+
+
 
 
 
 
 <section class="why">
 
-<h2>Why Choose Nexvora?</h2>
+
+<h2>
+
+Why Choose Nexvora?
+
+</h2>
+
+
 
 <div class="features">
 
+
 <div class="feature">
+
 <h3>✅ Premium Quality</h3>
-<p>Every product is carefully selected for quality and reliability.</p>
+
+<p>
+Carefully selected reliable products.
+</p>
+
 </div>
 
+
+
+
 <div class="feature">
+
 <h3>🚚 Fast Delivery</h3>
-<p>Islandwide delivery across Sri Lanka.</p>
+
+<p>
+Islandwide delivery across Sri Lanka.
+</p>
+
 </div>
 
+
+
+
+
 <div class="feature">
+
 <h3>💬 Customer Support</h3>
-<p>Friendly support before and after your purchase.</p>
+
+<p>
+Friendly support before and after purchase.
+</p>
+
 </div>
+
+
+
+
 
 <div class="feature">
+
 <h3>🔒 Secure Shopping</h3>
-<p>Shop with confidence and trusted service.</p>
-</div>
+
+<p>
+Safe and trusted online experience.
+</p>
 
 </div>
+
+
+
+</div>
+
 
 </section>
 
 
 
 
+
 <footer>
+
 
 <h2>NEXVORA</h2>
 
-<p>Power Every Connection</p>
 
-<p>Email: nexvoraofficial123@gmail.com</p>
+<p>
 
-<p>Islandwide Delivery | Sri Lanka</p>
+Powering Your Next Connection
 
-<p>© 2026 Nexvora. All Rights Reserved.</p>
+</p>
+
+
+<p>
+
+Email: nexvoraofficial123@gmail.com
+
+</p>
+
+
+<p>
+
+Islandwide Delivery | Sri Lanka
+
+</p>
+
+
+<p>
+
+© 2026 Nexvora. All Rights Reserved.
+
+</p>
+
 
 </footer>
+
 
 
 </body>
