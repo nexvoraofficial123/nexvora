@@ -3,15 +3,18 @@
 
 <head>
 
-<title>Nexvora Categories</title>
+<title>Nexvora | Shop Phone Accessories</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 
 <style>
 
 body{
     margin:0;
-    font-family:Arial, sans-serif;
+    font-family:'Montserrat', sans-serif;
     background:#f4f7fb;
 }
 
@@ -19,77 +22,124 @@ body{
 /* Navigation */
 
 nav{
+
     background:#050505;
     display:flex;
     justify-content:space-between;
     align-items:center;
     padding:20px 40px;
+
 }
 
 
 .logo{
+
     display:flex;
     align-items:center;
     gap:15px;
     color:white;
     text-decoration:none;
-    font-size:30px;
-    font-weight:bold;
+    font-size:32px;
+    font-weight:800;
+    letter-spacing:1px;
+
 }
 
 
 .logo img{
+
     height:55px;
+
 }
 
 
 nav a{
+
     color:white;
     text-decoration:none;
     margin-left:25px;
-    font-weight:bold;
+    font-weight:600;
+
 }
 
 
 nav a:hover{
+
     color:#00AEEF;
+
 }
-/* WhatsApp Floating Button */
+
+
+/* Dropdown */
+
+
+.dropdown{
+
+    position:relative;
+    display:inline-block;
+
+}
+
+
+.dropdown-menu{
+
+    display:none;
+    position:absolute;
+    background:white;
+    width:230px;
+    top:35px;
+    right:0;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    overflow:hidden;
+    z-index:100;
+
+}
+
+
+.dropdown-menu a{
+
+    display:block;
+    color:#111;
+    padding:14px;
+    margin:0;
+
+}
+
+
+.dropdown-menu a:hover{
+
+    background:#00AEEF;
+    color:white;
+
+}
+
+
+.dropdown:hover .dropdown-menu{
+
+    display:block;
+
+}
+
+
+
+/* WhatsApp Button */
+
 
 .whatsapp-btn{
 
 position:fixed;
-
 bottom:25px;
-
 right:25px;
-
 width:65px;
-
 height:65px;
-
 background:#25D366;
-
 border-radius:50%;
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 box-shadow:0 5px 20px rgba(0,0,0,0.3);
-
 z-index:999;
-
-transition:0.3s;
-
-}
-
-
-.whatsapp-btn:hover{
-
-transform:scale(1.1);
 
 }
 
@@ -97,19 +147,21 @@ transform:scale(1.1);
 .whatsapp-btn img{
 
 width:40px;
-
 height:40px;
 
 }
 
+
+
 /* Header */
+
 
 .header{
 
 background:#050505;
 color:white;
 text-align:center;
-padding:50px 20px;
+padding:60px 20px;
 
 }
 
@@ -117,6 +169,7 @@ padding:50px 20px;
 .header h1{
 
 font-size:45px;
+font-weight:800;
 
 }
 
@@ -128,7 +181,9 @@ color:#00AEEF;
 }
 
 
+
 /* Categories */
+
 
 .categories{
 
@@ -139,6 +194,7 @@ padding:50px 20px;
 gap:25px;
 
 }
+
 
 
 .category{
@@ -161,11 +217,26 @@ transform:translateY(-8px);
 }
 
 
+
+.category img{
+
+width:80px;
+height:80px;
+object-fit:contain;
+margin-bottom:15px;
+
+}
+
+
+
 .category h2{
 
 color:#00AEEF;
+font-size:20px;
 
 }
+
+
 
 
 .btn{
@@ -188,7 +259,29 @@ background:#008ECC;
 }
 
 
+
+/* Footer */
+
+
+footer{
+
+background:#050505;
+color:white;
+text-align:center;
+padding:40px 20px;
+
+}
+
+
+footer h2{
+
+color:#00AEEF;
+
+}
+
+
 </style>
+
 
 </head>
 
@@ -197,6 +290,7 @@ background:#008ECC;
 
 
 <nav>
+
 
 <a href="index.html" class="logo">
 
@@ -207,10 +301,82 @@ background:#008ECC;
 </a>
 
 
+
 <div>
 
-<a href="index.html">Home</a>
-<a href="contact.html">Contact</a>
+
+<a href="index.html">
+Home
+</a>
+
+
+
+<div class="dropdown">
+
+
+<a href="categories.html">
+Shop ▾
+</a>
+
+
+<div class="dropdown-menu">
+
+
+<a href="fastchargers.html">
+Fast Chargers
+</a>
+
+
+<a href="earbuds.html">
+Earbuds
+</a>
+
+
+<a href="powerbanks.html">
+Power Banks
+</a>
+
+
+<a href="phonecases.html">
+Phone Cases
+</a>
+
+
+<a href="chargingcables.html">
+USB Cables
+</a>
+
+
+<a href="cameraaccessories.html">
+Camera Accessories
+</a>
+
+
+<a href="carphoneholders.html">
+Car Phone Holders
+</a>
+
+
+<a href="bluetoothspeakers.html">
+Bluetooth Speakers
+</a>
+
+
+<a href="temperedglass.html">
+Tempered Glass
+</a>
+
+
+</div>
+
+
+</div>
+
+
+<a href="contact.html">
+Contact
+</a>
+
 
 </div>
 
@@ -219,24 +385,36 @@ background:#008ECC;
 
 
 
+
 <section class="header">
 
-<h1>Explore <span>Nexvora</span> Categories</h1>
+<h1>
+Explore <span>Nexvora</span> Products
+</h1>
 
-<p>Premium accessories for your connected lifestyle</p>
+<p>
+Premium accessories for your connected lifestyle
+</p>
+
 
 </section>
+
 
 
 
 <section class="categories">
 
 
+
 <div class="category">
 
-<h2>📱 Fast Chargers</h2>
+<img src="images/charger.png">
 
-<p>Fast and reliable charging solutions.</p>
+<h2>Fast Chargers</h2>
+
+<p>
+Fast and reliable charging solutions.
+</p>
 
 <a href="fastchargers.html" class="btn">
 View Products
@@ -246,11 +424,16 @@ View Products
 
 
 
+
 <div class="category">
 
-<h2>🎧 Earbuds</h2>
+<img src="images/earbuds.png">
 
-<p>Premium wireless audio experience.</p>
+<h2>Earbuds</h2>
+
+<p>
+Premium wireless audio experience.
+</p>
 
 <a href="earbuds.html" class="btn">
 View Products
@@ -260,11 +443,16 @@ View Products
 
 
 
+
 <div class="category">
 
-<h2>🔋 Power Banks</h2>
+<img src="images/powerbank.png">
 
-<p>Portable power wherever you go.</p>
+<h2>Power Banks</h2>
+
+<p>
+Portable power wherever you go.
+</p>
 
 <a href="powerbanks.html" class="btn">
 View Products
@@ -274,11 +462,16 @@ View Products
 
 
 
+
 <div class="category">
 
-<h2>🛡 Phone Cases</h2>
+<img src="images/case.png">
 
-<p>Protection with modern style.</p>
+<h2>Phone Cases</h2>
+
+<p>
+Protection with modern style.
+</p>
 
 <a href="phonecases.html" class="btn">
 View Products
@@ -288,11 +481,16 @@ View Products
 
 
 
+
 <div class="category">
 
-<h2>🔌 USB Cables</h2>
+<img src="images/cable.png">
 
-<p>Durable fast charging cables.</p>
+<h2>USB Cables</h2>
+
+<p>
+Durable fast charging cables.
+</p>
 
 <a href="chargingcables.html" class="btn">
 View Products
@@ -302,11 +500,16 @@ View Products
 
 
 
+
 <div class="category">
 
-<h2>Camera accessories</h2>
+<img src="images/camera.png">
 
-<p>Smart lifestyle technology.</p>
+<h2>Camera Accessories</h2>
+
+<p>
+Capture every moment with quality accessories.
+</p>
 
 <a href="cameraaccessories.html" class="btn">
 View Products
@@ -314,11 +517,18 @@ View Products
 
 </div>
 
-    <div class="category">
 
-<h2>Car phone Holders</h2>
 
-<p>Smart lifestyle technology.</p>
+
+<div class="category">
+
+<img src="images/carholder.png">
+
+<h2>Car Phone Holders</h2>
+
+<p>
+Safe and convenient vehicle phone solutions.
+</p>
 
 <a href="carphoneholders.html" class="btn">
 View Products
@@ -326,11 +536,18 @@ View Products
 
 </div>
 
-        <div class="category">
+
+
+
+<div class="category">
+
+<img src="images/speaker.png">
 
 <h2>Bluetooth Speakers</h2>
 
-<p>Smart lifestyle technology.</p>
+<p>
+Portable speakers with powerful wireless sound.
+</p>
 
 <a href="bluetoothspeakers.html" class="btn">
 View Products
@@ -338,11 +555,18 @@ View Products
 
 </div>
 
-            <div class="category">
+
+
+
+<div class="category">
+
+<img src="images/glass.png">
 
 <h2>Tempered Glass</h2>
 
-<p>Smart lifestyle technology.</p>
+<p>
+Premium screen protection.
+</p>
 
 <a href="temperedglass.html" class="btn">
 View Products
@@ -350,17 +574,43 @@ View Products
 
 </div>
 
+
+
 </section>
 
-<!-- WhatsApp Floating Button -->
 
-<a href="https://wa.me/947XXXXXXXX" 
-class="whatsapp-btn" 
+
+
+<a href="https://wa.me/947XXXXXXXX"
+class="whatsapp-btn"
 target="_blank">
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 
 </a>
+
+
+
+
+<footer>
+
+<h2>NEXVORA</h2>
+
+<p>
+Power Every Connection
+</p>
+
+<p>
+Islandwide Delivery | Sri Lanka
+</p>
+
+<p>
+© 2026 Nexvora. All Rights Reserved.
+</p>
+
+</footer>
+
+
 
 </body>
 
