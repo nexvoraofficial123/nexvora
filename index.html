@@ -32,7 +32,13 @@ body{
 }
 
 .card img{
+    width:100%;
     border-radius:10px;
+    transition:0.3s;
+}
+
+.card:hover img{
+    transform:scale(1.05);
 }
 
 /* Paste here */
@@ -61,8 +67,9 @@ nav{
     display:flex;
     align-items:center;
     gap:15px;
-    font-size:30px;
-    font-weight:700;
+    font-size:32px;
+    font-weight:800;
+    letter-spacing:1px;
     color:white;
 }
 
@@ -75,8 +82,9 @@ nav{
 nav a{
     color:white;
     text-decoration:none;
-    margin-left:25px;
+    margin-left:30px;
     font-weight:600;
+    font-size:16px;
     transition:0.3s;
 }
 
@@ -102,8 +110,9 @@ nav a:hover{
 }
 
 .hero h1{
-    font-size:70px;
-    font-weight:700;
+    font-size:72px;
+    font-weight:800;
+    line-height:1.1;
     margin-bottom:20px;
 }
 
@@ -112,11 +121,11 @@ nav a:hover{
 }
 
 .hero p{
-    font-size:22px;
-    max-width:700px;
+    font-size:20px;
+    max-width:650px;
     margin:20px auto 40px;
     line-height:1.8;
-    color:#eeeeee;
+    color:#f2f2f2;
 }
 
 .btn{
@@ -126,9 +135,14 @@ nav a:hover{
     padding:15px 35px;
     text-decoration:none;
     border-radius:30px;
-    font-size:18px;
-    font-weight:bold;
+    font-size:16px;
+    font-weight:700;
     transition:0.3s;
+}
+
+.btn:hover{
+    background:#0088cc;
+    transform:translateY(-2px);
 }
 
 .btn:hover{
@@ -155,6 +169,7 @@ nav a:hover{
     background:white;
     width:240px;
     margin:20px;
+ overflow:hidden;
     padding:20px;
     border-radius:18px;
     box-shadow:0 10px 25px rgba(0,0,0,0.08);
