@@ -18,7 +18,17 @@ padding:0;
 box-sizing:border-box;
 }
 
+.shop-btn{
+    background:#00AEEF;
+    padding:10px 25px;
+    border-radius:30px;
+    color:white !important;
+}
 
+.shop-btn:hover{
+    background:#008ECC;
+}
+  
 body{
 
 font-family:'Montserrat',sans-serif;
@@ -45,13 +55,14 @@ font-size:14px;
 /* NAVIGATION */
 
 nav{
-
-background:#050505;
-padding:20px 8%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-
+    background:#050505;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
 
@@ -77,19 +88,17 @@ height:55px;
 
 
 nav a{
-
-color:white;
-text-decoration:none;
-margin-left:25px;
-font-weight:600;
-
+    color:white;
+    text-decoration:none;
+    margin-left:30px;
+    font-weight:bold;
+    display:inline-block;
+    padding:10px 5px;
 }
 
 
 nav a:hover{
-
-color:#00AEEF;
-
+    color:#00AEEF;
 }
 
 
@@ -539,9 +548,9 @@ width:90%;
 
 <div>
 
-<a href="index.html">Home</a>
 
-<a href="categories.html">Shop</a>
+<a href="categories.html" class="shop-btn">
+Shop</a>
 
 <a href="contact.html">Contact</a>
 
