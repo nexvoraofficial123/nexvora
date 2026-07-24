@@ -170,6 +170,33 @@ padding:50px 20px;
 
 }
 
+/* NEW CODE STARTS HERE */
+
+.features{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+    margin-top:40px;
+}
+
+.feature{
+    background:white;
+    color:#111;
+    width:250px;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.feature:hover{
+    transform:translateY(-8px);
+}
+
+.feature h3{
+    color:#00AEEF;
+}
 
 /* Footer */
 
@@ -335,16 +362,33 @@ text-align:center;
 
 
 
-
 <section class="why">
 
 <h2>Why Choose Nexvora?</h2>
 
-<p>✓ Quality Tested Products</p>
-<p>✓ Fast Islandwide Delivery</p>
-<p>✓ Customer Support</p>
-<p>✓ Trusted Online Shopping Experience</p>
+<div class="features">
 
+<div class="feature">
+<h3>✅ Premium Quality</h3>
+<p>Every product is carefully selected for quality and reliability.</p>
+</div>
+
+<div class="feature">
+<h3>🚚 Fast Delivery</h3>
+<p>Islandwide delivery across Sri Lanka.</p>
+</div>
+
+<div class="feature">
+<h3>💬 Customer Support</h3>
+<p>Friendly support before and after your purchase.</p>
+</div>
+
+<div class="feature">
+<h3>🔒 Secure Shopping</h3>
+<p>Shop with confidence and trusted service.</p>
+</div>
+
+</div>
 
 </section>
 
