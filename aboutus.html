@@ -63,7 +63,54 @@ nav a{
     color:white;
 }
 
+/* WhatsApp Floating Button */
 
+.whatsapp-btn{
+
+position:fixed;
+
+bottom:25px;
+
+right:25px;
+
+width:65px;
+
+height:65px;
+
+background:#25D366;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+box-shadow:0 5px 20px rgba(0,0,0,0.3);
+
+z-index:999;
+
+transition:0.3s;
+
+}
+
+
+.whatsapp-btn:hover{
+
+transform:scale(1.1);
+
+}
+
+
+.whatsapp-btn img{
+
+width:40px;
+
+height:40px;
+
+}
+    
 .hero h1{
     font-size:45px;
 }
@@ -431,8 +478,15 @@ and beyond by connecting people with innovative products.
 </p>
 
 </footer>
+<!-- WhatsApp Floating Button -->
 
+<a href="https://wa.me/947XXXXXXXX" 
+class="whatsapp-btn" 
+target="_blank">
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+
+</a>
 
 </body>
 </html>
