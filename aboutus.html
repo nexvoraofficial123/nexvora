@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us | Nexvora</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#ffffff;
+    color:#222;
+}
+
+
+/* Navigation */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:#0b0b0b;
+}
+
+.logo{
+    color:#00aaff;
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+}
+
+
+/* Hero Section */
+
+.hero{
+    height:450px;
+    background:linear-gradient(
+    rgba(0,0,0,0.7),
+    rgba(0,0,0,0.7)),
+    url("images/technology.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+
+.hero h1{
+    font-size:45px;
+}
+
+.hero p{
+    font-size:18px;
+    margin:20px;
+}
+
+
+.btn{
+    background:#00aaff;
+    color:white;
+    padding:12px 30px;
+    border-radius:30px;
+    text-decoration:none;
+}
+
+
+
+/* Common Section */
+
+.section{
+    padding:60px 10%;
+    text-align:center;
+}
+
+
+.section h2{
+    font-size:32px;
+    margin-bottom:20px;
+    color:#111;
+}
+
+
+.section p{
+    max-width:900px;
+    margin:auto;
+    line-height:1.8;
+}
+
+
+
+/* Product Cards */
+
+.cards{
+
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    margin-top:40px;
+    flex-wrap:wrap;
+
+}
+
+
+.card{
+
+    width:250px;
+    padding:30px;
+    border-radius:15px;
+    background:#f5f5f5;
+    transition:.3s;
+
+}
+
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+
+.card h3{
+    margin-bottom:15px;
+    color:#00aaff;
+}
+
+
+
+/* Why Choose */
+
+.choose{
+
+background:#0b0b0b;
+color:white;
+
+}
+
+
+.features{
+
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+margin-top:30px;
+
+}
+
+
+.feature{
+
+background:#161616;
+padding:25px;
+width:220px;
+border-radius:15px;
+
+}
+
+
+
+/* Footer */
+
+footer{
+
+background:#000;
+color:white;
+text-align:center;
+padding:25px;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- Navigation -->
+
+<nav>
+
+<div class="logo">
+NEXVORA
+</div>
+
+
+<div>
+<a href="index.html">Home</a>
+<a href="products.html">Products</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</div>
+
+</nav>
+
+
+
+<!-- Hero -->
+
+<section class="hero">
+
+<div>
+
+<h1>
+Powering Your Next Connection
+</h1>
+
+
+<p>
+Premium mobile accessories designed for your digital lifestyle.
+</p>
+
+
+<a class="btn" href="products.html">
+Shop Now
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- About -->
+
+<section class="section">
+
+
+<h2>
+Who We Are
+</h2>
+
+
+<p>
+
+Nexvora is a modern technology accessories brand focused on providing
+quality, stylish and affordable mobile solutions.
+
+We carefully select products that help customers stay connected,
+productive and enjoy better digital experiences.
+
+</p>
+
+
+</section>
+
+
+
+
+
+<!-- Mission -->
+
+<section class="section">
+
+<h2>
+Our Mission
+</h2>
+
+
+<p>
+
+Our mission is to make reliable technology accessories accessible
+to everyone through a simple and trusted online shopping experience.
+
+</p>
+
+
+</section>
+
+
+
+
+<!-- Products -->
+
+<section class="section">
+
+
+<h2>
+What We Offer
+</h2>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<h3>
+📱 Protection
+</h3>
+
+<p>
+Phone Cases, Tempered Glass and Camera Protectors
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+⚡ Power
+</h3>
+
+<p>
+Fast Chargers, Cables and Power Banks
+</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>
+🎧 Smart Accessories
+</h3>
+
+<p>
+Wireless Earbuds, Speakers and Smart Devices
+</p>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- Why Choose -->
+
+<section class="section choose">
+
+
+<h2>
+Why Choose Nexvora
+</h2>
+
+
+
+<div class="features">
+
+
+<div class="feature">
+<h3>Quality</h3>
+<p>Trusted products selected carefully.</p>
+</div>
+
+
+<div class="feature">
+<h3>Affordable</h3>
+<p>Modern technology at fair prices.</p>
+</div>
+
+
+<div class="feature">
+<h3>Delivery</h3>
+<p>Reliable delivery across Sri Lanka.</p>
+</div>
+
+
+<div class="feature">
+<h3>Support</h3>
+<p>Customer-focused service.</p>
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- Vision -->
+
+<section class="section">
+
+
+<h2>
+Our Vision
+</h2>
+
+
+<p>
+
+To grow Nexvora into a trusted technology lifestyle brand in Sri Lanka
+and beyond by connecting people with innovative products.
+
+</p>
+
+
+</section>
+
+
+
+<footer>
+
+<p>
+© 2026 Nexvora | Powering Your Next Connection
+</p>
+
+</footer>
+
+
+
+</body>
+</html>
