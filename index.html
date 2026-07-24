@@ -41,11 +41,14 @@ body{
 
 nav{
     background:#050505;
-    color:white;
-    padding:20px;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    padding:18px 50px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 15px rgba(0,0,0,0.15);
 }
 
 .logo{
@@ -66,7 +69,13 @@ nav{
 nav a{
     color:white;
     text-decoration:none;
-    margin:10px;
+    margin-left:25px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#00AEEF;
 }
 
 
