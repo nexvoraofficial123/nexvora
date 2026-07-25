@@ -15,6 +15,7 @@
       font-family: Arial, sans-serif;
       background: #fff;
       color: #111;
+      padding-bottom: 90px;
     }
 
     .announcement-bar {
@@ -24,13 +25,16 @@
       padding: 10px 15px;
       font-size: 14px;
       font-weight: 700;
+      position: sticky;
+      top: 0;
+      z-index: 1100;
     }
 
     .top-header {
       background: #fff;
       border-bottom: 1px solid #e8e8e8;
       position: sticky;
-      top: 0;
+      top: 40px;
       z-index: 1000;
     }
 
@@ -40,7 +44,21 @@
       justify-content: space-between;
       gap: 16px;
       padding: 14px 24px;
-      background: #fff;
+      flex-wrap: wrap;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 180px;
+    }
+
+    .logo-wrap img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      border-radius: 8px;
     }
 
     .logo a {
@@ -54,6 +72,7 @@
       display: flex;
       flex: 1;
       max-width: 520px;
+      min-width: 260px;
     }
 
     .search-bar input {
@@ -74,36 +93,34 @@
       cursor: pointer;
     }
 
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .action-link {
-      text-decoration: none;
-      color: #111;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
     .bottom-nav {
       display: flex;
-      gap: 28px;
-      padding: 12px 24px;
+      justify-content: space-around;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
       border-top: 1px solid #f0f0f0;
       background: #fff;
     }
 
-    .bottom-nav a {
+    .nav-item {
       text-decoration: none;
       color: #222;
-      font-weight: 600;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      min-width: 70px;
     }
 
-    .bottom-nav a:hover,
-    .action-link:hover,
-    .logo a:hover {
+    .nav-icon {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .nav-item:hover {
       opacity: 0.75;
     }
 
@@ -123,76 +140,31 @@
       color: #555;
     }
 
-    .section-title {
-      padding: 30px 24px 10px;
-      font-size: 26px;
-      font-weight: 700;
+    .content {
+      padding: 30px 24px 120px;
+      min-height: 500px;
     }
 
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      padding: 20px 24px 60px;
-    }
-
-    .product-card {
-      background: #fff;
-      border: 1px solid #eee;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-      transition: transform 0.2s ease;
-    }
-
-    .product-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .product-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .product-info {
-      padding: 16px;
-    }
-
-    .product-info h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .price {
-      font-size: 20px;
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 12px;
-    }
-
-    .add-btn {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 10px;
+    .free-shipping {
+      position: fixed;
+      left: 16px;
+      bottom: 86px;
       background: #111;
       color: #fff;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    .add-btn:hover {
-      background: #333;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      z-index: 9998;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
     }
 
     .whatsapp-float {
       position: fixed;
-      right: 20px;
-      bottom: 20px;
-      width: 58px;
-      height: 58px;
+      right: 16px;
+      bottom: 86px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
       background: #25d366;
       color: #fff;
@@ -200,20 +172,29 @@
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      font-size: 30px;
+      font-size: 29px;
       z-index: 9999;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
     .whatsapp-float:hover {
-      transform: scale(1.08);
-      opacity: 0.95;
+      transform: scale(1.06);
+    }
+
+    .bottom-fixed-menu {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff;
+      border-top: 1px solid #e6e6e6;
+      box-shadow: 0 -4px 18px rgba(0,0,0,0.06);
+      z-index: 10000;
     }
 
     @media (max-width: 900px) {
       .header-main {
-        flex-wrap: wrap;
+        padding: 12px 16px;
       }
 
       .search-bar {
@@ -222,48 +203,34 @@
         max-width: 100%;
       }
 
-      .header-actions {
-        margin-left: auto;
-      }
-
-      .bottom-nav {
-        flex-wrap: wrap;
-        gap: 16px;
-      }
-
       .hero h1 {
         font-size: 32px;
       }
     }
 
     @media (max-width: 600px) {
-      .header-main {
-        padding: 12px 16px;
+      .logo a {
+        font-size: 20px;
       }
 
-      .bottom-nav {
-        padding: 12px 16px;
+      .logo-wrap img {
+        width: 36px;
+        height: 36px;
       }
 
-      .header-actions {
-        width: 100%;
-        justify-content: space-between;
+      .free-shipping {
+        left: 12px;
+        bottom: 82px;
+        font-size: 12px;
+        padding: 8px 12px;
       }
 
       .whatsapp-float {
-        right: 14px;
-        bottom: 14px;
-        width: 52px;
-        height: 52px;
-        font-size: 28px;
-      }
-
-      .hero {
-        padding: 40px 16px;
-      }
-
-      .product-grid {
-        padding: 16px 16px 50px;
+        right: 12px;
+        bottom: 82px;
+        width: 50px;
+        height: 50px;
+        font-size: 26px;
       }
     }
   </style>
@@ -276,77 +243,58 @@
 
   <header class="top-header">
     <div class="header-main">
-      <div class="logo">
-        <a href="index.html">MyStore</a>
+      <div class="logo-wrap">
+        <img src="https://via.placeholder.com/80x80?text=Logo" alt="Store Logo" />
+        <div class="logo">
+          <a href="index.html">MyStore</a>
+        </div>
       </div>
 
       <div class="search-bar">
         <input type="text" placeholder="Search products..." />
         <button type="button">Search</button>
       </div>
-
-      <div class="header-actions">
-        <a href="#" class="action-link">Cart</a>
-        <a href="#" class="action-link">Create Account</a>
-      </div>
     </div>
-
-    <nav class="bottom-nav">
-      <a href="index.html">Menu</a>
-      <a href="#">Shop</a>
-      <a href="#">Contact</a>
-      <a href="#">About Us</a>
-    </nav>
   </header>
 
-  <section class="hero">
-    <h1>Welcome to MyStore</h1>
-    <p>Find products you love at the best price.</p>
-  </section>
+  <main>
+    <section class="hero">
+      <h1>Welcome to MyStore</h1>
+      <p>Find products you love at the best price.</p>
+    </section>
 
-  <h2 class="section-title">Featured Products</h2>
+    <section class="content">
+      <h2>Home page content here</h2>
+      <p>You can add products, banners, and more sections below.</p>
+    </section>
+  </main>
 
-  <section class="product-grid">
-    <div class="product-card">
-      <img src="https://via.placeholder.com/600x400?text=Product+1" alt="Product 1">
-      <div class="product-info">
-        <h3>Product Name 1</h3>
-        <div class="price">LKR 1,250.00</div>
-        <button class="add-btn">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="https://via.placeholder.com/600x400?text=Product+2" alt="Product 2">
-      <div class="product-info">
-        <h3>Product Name 2</h3>
-        <div class="price">LKR 1,850.00</div>
-        <button class="add-btn">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="https://via.placeholder.com/600x400?text=Product+3" alt="Product 3">
-      <div class="product-info">
-        <h3>Product Name 3</h3>
-        <div class="price">LKR 2,100.00</div>
-        <button class="add-btn">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <img src="https://via.placeholder.com/600x400?text=Product+4" alt="Product 4">
-      <div class="product-info">
-        <h3>Product Name 4</h3>
-        <div class="price">LKR 990.00</div>
-        <button class="add-btn">Add to Cart</button>
-      </div>
-    </div>
-  </section>
+  <div class="free-shipping">Free Shipping</div>
 
   <a class="whatsapp-float" href="https://wa.me/94700000000" target="_blank" aria-label="Chat on WhatsApp">
     &#128172;
   </a>
+
+  <nav class="bottom-fixed-menu">
+    <div class="bottom-nav">
+      <a href="index.html" class="nav-item">
+        <span class="nav-icon">&#8962;</span>
+        <span>Home</span>
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-icon">&#9776;</span>
+        <span>Categories</span>
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-icon">&#128722;</span>
+        <span>Cart</span>
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-icon">&#128100;</span>
+        <span>Account</span>
+      </a>
+    </div>
+  </nav>
 
 </body>
 </html>
