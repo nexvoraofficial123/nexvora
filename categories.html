@@ -21,8 +21,42 @@ body{
 
 /* Navigation */
 
-@media (max-width:768px){
+/* Navigation */
 
+nav{
+    background:#050505;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    color:white;
+    text-decoration:none;
+    font-size:32px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.logo img{
+    height:55px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-weight:600;
+}
+
+nav a:hover{
+    color:#00AEEF;
+}
+    
 nav{
     flex-direction:column;
     align-items:center;
@@ -77,6 +111,10 @@ nav a{
     border-radius:10px;
 }
 
+    .dropdown:hover .dropdown-menu{
+    display:block;
+}
+    
 .whatsapp-btn{
     width:55px;
     height:55px;
@@ -584,19 +622,6 @@ View Products
 
 
 </section>
-
-
-
-
-<a href="https://wa.me/947XXXXXXXX"
-class="whatsapp-btn"
-target="_blank">
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
-
-</a>
-
-
 
 
 <footer>
