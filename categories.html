@@ -247,12 +247,15 @@ gap:25px;
 .category{
 
 background:white;
-width:250px;
+width:100%;
+max-width:250px;
+margin:auto;
 padding:30px;
 border-radius:20px;
 text-align:center;
 box-shadow:0 10px 25px #ddd;
 transition:0.3s;
+box-sizing:border-box;
 
 }
 
@@ -326,6 +329,47 @@ color:#00AEEF;
 
 }
 
+    /* ---------- Tablet ---------- */
+
+@media (max-width:992px){
+
+nav{
+    padding:15px 20px;
+}
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width:768px){
+
+nav{
+    flex-direction:column;
+    text-align:center;
+    gap:15px;
+    padding:20px;
+}
+
+nav div{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.logo{
+    font-size:26px;
+}
+
+.header h1{
+    font-size:32px;
+}
+
+.categories{
+    grid-template-columns:1fr;
+    padding:30px 15px;
+}
+
+}
 
 </style>
 
