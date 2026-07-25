@@ -1,300 +1,714 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Store</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #fff;
-      color: #111;
-      padding-bottom: 90px;
-    }
+<title>NEXVORA Mobile Accessories</title>
 
-    .announcement-bar {
-      background: #f4e8ff;
-      color: #5d2f86;
-      text-align: center;
-      padding: 10px 15px;
-      font-size: 14px;
-      font-weight: 700;
-      position: sticky;
-      top: 0;
-      z-index: 1100;
-    }
+<link rel="stylesheet" href="style.css">
 
-    .top-header {
-      background: #fff;
-      border-bottom: 1px solid #e8e8e8;
-      position: sticky;
-      top: 40px;
-      z-index: 1000;
-    }
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    .header-main {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 14px 24px;
-      flex-wrap: wrap;
-    }
-
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 180px;
-    }
-
-    .logo-wrap img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-
-    .logo a {
-      text-decoration: none;
-      color: #111;
-      font-size: 24px;
-      font-weight: 700;
-    }
-
-    .search-bar {
-      display: flex;
-      flex: 1;
-      max-width: 520px;
-      min-width: 260px;
-    }
-
-    .search-bar input {
-      width: 100%;
-      padding: 11px 14px;
-      border: 1px solid #ccc;
-      border-right: none;
-      border-radius: 8px 0 0 8px;
-      outline: none;
-    }
-
-    .search-bar button {
-      padding: 11px 18px;
-      border: 1px solid #ccc;
-      background: #111;
-      color: #fff;
-      border-radius: 0 8px 8px 0;
-      cursor: pointer;
-    }
-
-    .bottom-nav {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 16px;
-      border-top: 1px solid #f0f0f0;
-      background: #fff;
-    }
-
-    .nav-item {
-      text-decoration: none;
-      color: #222;
-      font-weight: 700;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      font-size: 13px;
-      min-width: 70px;
-    }
-
-    .nav-icon {
-      font-size: 22px;
-      line-height: 1;
-    }
-
-    .nav-item:hover {
-      opacity: 0.75;
-    }
-
-    .hero {
-      padding: 60px 24px;
-      text-align: center;
-      background: linear-gradient(180deg, #fafafa, #fff);
-    }
-
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 12px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: #555;
-    }
-
-    .content {
-      padding: 30px 24px 120px;
-      min-height: 500px;
-    }
-
-    .free-shipping {
-      position: fixed;
-      left: 16px;
-      bottom: 86px;
-      background: #111;
-      color: #fff;
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 700;
-      z-index: 9998;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
-    }
-
-    .whatsapp-float {
-      position: fixed;
-      right: 16px;
-      bottom: 86px;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: #25d366;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-size: 29px;
-      z-index: 9999;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-    }
-
-    .whatsapp-float:hover {
-      transform: scale(1.06);
-    }
-
-    .bottom-fixed-menu {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: #fff;
-      border-top: 1px solid #e6e6e6;
-      box-shadow: 0 -4px 18px rgba(0,0,0,0.06);
-      z-index: 10000;
-    }
-
-    @media (max-width: 900px) {
-      .header-main {
-        padding: 12px 16px;
-      }
-
-      .search-bar {
-        order: 3;
-        width: 100%;
-        max-width: 100%;
-      }
-
-      .hero h1 {
-        font-size: 32px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .logo a {
-        font-size: 20px;
-      }
-
-      .logo-wrap img {
-        width: 36px;
-        height: 36px;
-      }
-
-      .free-shipping {
-        left: 12px;
-        bottom: 82px;
-        font-size: 12px;
-        padding: 8px 12px;
-      }
-
-      .whatsapp-float {
-        right: 12px;
-        bottom: 82px;
-        width: 50px;
-        height: 50px;
-        font-size: 26px;
-      }
-    }
-  </style>
 </head>
+
 <body>
 
-  <div class="announcement-bar">
-    Deliver Islandwide
-  </div>
+<!-- ==========================
+Announcement Bar
+========================== -->
 
-  <header class="top-header">
-    <div class="header-main">
-      <div class="logo-wrap">
-        <img src="https://via.placeholder.com/80x80?text=Logo" alt="Store Logo" />
-        <div class="logo">
-          <a href="index.html">MyStore</a>
+<div class="announcement-bar">
+
+    <div class="announcement-text">
+
+        🚚 FREE Islandwide Delivery
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        💳 Cash On Delivery
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        🔒 Secure Payment
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        ⭐ Genuine Products
+
+    </div>
+
+</div>
+
+<!-- ==========================
+Header
+========================== -->
+
+<header class="header">
+
+    <div class="logo">
+
+        <a href="index.html">
+
+            <img src="images/logo.png" alt="Logo">
+
+        </a>
+
+    </div>
+
+    <div class="search-area">
+
+        <input
+            type="text"
+            placeholder="Search Products...">
+
+        <button>
+
+            <i class="fas fa-search"></i>
+
+        </button>
+
+    </div>
+
+    <div class="header-icons">
+
+        <a href="#" class="wishlist">
+
+            <i class="far fa-heart"></i>
+
+            <span class="count">0</span>
+
+        </a>
+
+        <a href="#" class="cart">
+
+            <i class="fas fa-shopping-cart"></i>
+
+            <span class="count">0</span>
+
+        </a>
+
+        <a href="#" class="account">
+
+            <i class="far fa-user"></i>
+
+        </a>
+
+    </div>
+
+</header>
+
+<!-- ==========================
+Fast Delivery Banner
+========================== -->
+
+<section class="delivery-banner">
+
+    <div class="delivery-content">
+
+        <div>
+
+            <h2>
+                🚚 Fast Islandwide Delivery
+            </h2>
+
+            <p>
+
+                Delivery within 1–3 Business Days
+
+            </p>
+
         </div>
-      </div>
 
-      <div class="search-bar">
-        <input type="text" placeholder="Search products..." />
-        <button type="button">Search</button>
-      </div>
+        <a href="delivery.html" class="delivery-button">
+
+            Learn More
+
+        </a>
+
     </div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <h1>Welcome to MyStore</h1>
-      <p>Find products you love at the best price.</p>
-    </section>
+</section>
 
-    <section class="content">
-      <h2>Home page content here</h2>
-      <p>You can add products, banners, and more sections below.</p>
-    </section>
-  </main>
+<!-- ==========================
+Hero Slider
+========================== -->
 
-  <div class="free-shipping">Free Shipping</div>
+<section class="hero-slider">
 
-  <a class="whatsapp-float" href="https://wa.me/94700000000" target="_blank" aria-label="Chat on WhatsApp">
-    &#128172;
-  </a>
+    <div class="slide active">
 
-  <nav class="bottom-fixed-menu">
-    <div class="bottom-nav">
-      <a href="index.html" class="nav-item">
-        <span class="nav-icon">&#8962;</span>
+        <img src="images/banner1.jpg" alt="Banner">
+
+        <div class="hero-content">
+
+            <h1>
+
+                Premium Mobile Accessories
+
+            </h1>
+
+            <p>
+
+                Best Quality • Best Prices
+
+            </p>
+
+            <a href="#" class="shop-btn">
+
+                Shop Now
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+  <!-- =========================================
+FEATURED PRODUCTS (AUTO SCROLL)
+========================================= -->
+
+<section class="featured-section">
+
+    <div class="section-title">
+        <h2>🔥 Featured Products</h2>
+        <a href="#">View All</a>
+    </div>
+
+    <div class="featured-slider">
+
+        <div class="featured-track">
+
+            <!-- Product 1 -->
+
+            <div class="product-card">
+
+                <span class="badge">-20%</span>
+
+                <img src="images/products/earbuds1.jpg" alt="Earbuds">
+
+                <h3>Wireless Earbuds Pro</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <div class="price">
+
+                    <span class="new-price">Rs.4,990</span>
+
+                    <span class="old-price">Rs.5,990</span>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="cart-btn">
+                        🛒 Add to Cart
+                    </button>
+
+                    <button class="buy-btn">
+                        Buy Now
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Product 2 -->
+
+            <div class="product-card">
+
+                <span class="badge">NEW</span>
+
+                <img src="images/products/powerbank1.jpg" alt="Power Bank">
+
+                <h3>20000mAh Power Bank</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <div class="price">
+
+                    <span class="new-price">Rs.6,990</span>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="cart-btn">
+                        🛒 Add to Cart
+                    </button>
+
+                    <button class="buy-btn">
+                        Buy Now
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Product 3 -->
+
+            <div class="product-card">
+
+                <span class="badge">SALE</span>
+
+                <img src="images/products/case1.jpg" alt="Phone Case">
+
+                <h3>Premium Phone Case</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <div class="price">
+
+                    <span class="new-price">Rs.1,490</span>
+
+                    <span class="old-price">Rs.1,990</span>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="cart-btn">
+                        🛒 Add to Cart
+                    </button>
+
+                    <button class="buy-btn">
+                        Buy Now
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Product 4 -->
+
+            <div class="product-card">
+
+                <span class="badge">BEST</span>
+
+                <img src="images/products/holder1.jpg" alt="Holder">
+
+                <h3>Car Phone Holder</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <div class="price">
+
+                    <span class="new-price">Rs.2,290</span>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="cart-btn">
+                        🛒 Add to Cart
+                    </button>
+
+                    <button class="buy-btn">
+                        Buy Now
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Duplicate products for infinite scroll -->
+
+            <div class="product-card">
+
+                <span class="badge">-20%</span>
+
+                <img src="images/products/earbuds1.jpg">
+
+                <h3>Wireless Earbuds Pro</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <div class="price">
+
+                    <span class="new-price">Rs.4,990</span>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="cart-btn">
+                        🛒 Add to Cart
+                    </button>
+
+                    <button class="buy-btn">
+                        Buy Now
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <span class="badge">NEW</span>
+
+                <img src="images/products/powerbank1.jpg">
+
+                <h3>20000mAh Power Bank</h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <div class="price">
+
+                    <span class="new-price">Rs.6,990</span>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="cart-btn">
+                        🛒 Add to Cart
+                    </button>
+
+                    <button class="buy-btn">
+                        Buy Now
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+TRENDING PRODUCTS
+========================================= -->
+
+<section class="trending-section">
+
+    <div class="section-title">
+
+        <h2>⭐ Trending Products</h2>
+
+        <a href="#">View All</a>
+
+    </div>
+
+    <div class="horizontal-products">
+
+        <div class="product-card">
+            <img src="images/products/trend1.jpg">
+            <h3>Bluetooth Speaker</h3>
+            <div class="rating">⭐⭐⭐⭐⭐</div>
+            <p>Rs.7,990</p>
+            <button class="cart-btn">🛒 Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/products/trend2.jpg">
+            <h3>Gaming Earbuds</h3>
+            <div class="rating">⭐⭐⭐⭐⭐</div>
+            <p>Rs.5,990</p>
+            <button class="cart-btn">🛒 Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/products/trend3.jpg">
+            <h3>Wireless Charger</h3>
+            <div class="rating">⭐⭐⭐⭐⭐</div>
+            <p>Rs.3,490</p>
+            <button class="cart-btn">🛒 Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/products/trend4.jpg">
+            <h3>USB-C Cable</h3>
+            <div class="rating">⭐⭐⭐⭐⭐</div>
+            <p>Rs.990</p>
+            <button class="cart-btn">🛒 Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/products/trend5.jpg">
+            <h3>Fast Charger</h3>
+            <div class="rating">⭐⭐⭐⭐⭐</div>
+            <p>Rs.2,990</p>
+            <button class="cart-btn">🛒 Add to Cart</button>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+CATEGORY : Earbuds
+========================================= -->
+
+<section class="category-section">
+
+    <div class="section-title">
+        <h2>🎧 Earbuds</h2>
+        <a href="earbuds.html">View All</a>
+    </div>
+
+    <div class="horizontal-products">
+
+        <!-- Product 1 -->
+        <div class="product-card">
+
+            <span class="badge">NEW</span>
+
+            <img src="images/products/earbuds1.jpg" alt="Earbuds">
+
+            <h3>Wireless Earbuds Pro</h3>
+
+            <div class="rating">⭐⭐⭐⭐⭐ (128)</div>
+
+            <div class="price">
+                <span class="new-price">Rs.4,990</span>
+                <span class="old-price">Rs.5,990</span>
+            </div>
+
+            <div class="buttons">
+                <button class="cart-btn">🛒 Add to Cart</button>
+                <button class="buy-btn">⚡ Buy Now</button>
+            </div>
+
+        </div>
+
+        <!-- Product 2 -->
+
+        <div class="product-card">
+
+            <img src="images/products/earbuds2.jpg">
+
+            <h3>Gaming Earbuds</h3>
+
+            <div class="rating">⭐⭐⭐⭐⭐ (95)</div>
+
+            <div class="price">
+                <span class="new-price">Rs.5,490</span>
+            </div>
+
+            <div class="buttons">
+                <button class="cart-btn">🛒 Add to Cart</button>
+                <button class="buy-btn">⚡ Buy Now</button>
+            </div>
+
+        </div>
+
+        <!-- Product 3 -->
+
+        <div class="product-card">
+
+            <img src="images/products/earbuds3.jpg">
+
+            <h3>Air Buds Lite</h3>
+
+            <div class="rating">⭐⭐⭐⭐⭐ (76)</div>
+
+            <div class="price">
+                <span class="new-price">Rs.3,990</span>
+            </div>
+
+            <div class="buttons">
+                <button class="cart-btn">🛒 Add to Cart</button>
+                <button class="buy-btn">⚡ Buy Now</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+Copy the above section and change ONLY the title,
+View All link and product details for:
+
+🔋 Power Banks
+🛡 Tempered Glasses
+📱 Phone Cases
+📷 Camera Accessories
+🧲 Phone Holders
+========================================= -->
+
+<!-- =========================================
+CUSTOMER REVIEWS
+========================================= -->
+
+<section class="reviews-section">
+
+    <div class="section-title">
+        <h2>⭐ Customer Reviews</h2>
+    </div>
+
+    <div class="reviews">
+
+        <div class="review-card">
+            ⭐⭐⭐⭐⭐
+            <p>"Excellent quality and super fast delivery!"</p>
+            <strong>- Kasun</strong>
+        </div>
+
+        <div class="review-card">
+            ⭐⭐⭐⭐⭐
+            <p>"Very good customer service."</p>
+            <strong>- Nimal</strong>
+        </div>
+
+        <div class="review-card">
+            ⭐⭐⭐⭐⭐
+            <p>"Best mobile accessories store."</p>
+            <strong>- Tharindu</strong>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+WHY CHOOSE US
+========================================= -->
+
+<section class="why-us">
+
+    <div class="section-title">
+        <h2>🏆 Why Choose Us</h2>
+    </div>
+
+    <div class="features">
+
+        <div class="feature">
+            🚚
+            <h3>Fast Delivery</h3>
+            <p>Islandwide delivery.</p>
+        </div>
+
+        <div class="feature">
+            💳
+            <h3>Cash On Delivery</h3>
+            <p>Pay after receiving.</p>
+        </div>
+
+        <div class="feature">
+            🔒
+            <h3>Secure Payment</h3>
+            <p>100% safe checkout.</p>
+        </div>
+
+        <div class="feature">
+            ⭐
+            <h3>Quality Products</h3>
+            <p>Original accessories.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+NEWSLETTER
+========================================= -->
+
+<section class="newsletter">
+
+    <h2>📩 Subscribe to our Newsletter</h2>
+
+    <p>Get exclusive offers and new arrivals.</p>
+
+    <form>
+
+        <input type="email"
+               placeholder="Enter your email">
+
+        <button>
+
+            Subscribe
+
+        </button>
+
+    </form>
+
+</section>
+
+<!-- =========================================
+FOOTER
+========================================= -->
+
+<footer class="footer">
+
+    <div class="footer-links">
+
+        <a href="about.html">About Us</a>
+
+        <a href="delivery.html">Delivery Information</a>
+
+        <a href="privacy.html">Privacy Policy</a>
+
+        <a href="terms.html">Terms & Conditions</a>
+
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+    <div class="social">
+
+        <a href="#"><i class="fab fa-facebook"></i></a>
+
+        <a href="#"><i class="fab fa-instagram"></i></a>
+
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+
+        <a href="https://wa.me/94700000000">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+    </div>
+
+    <p>
+        © 2026 NEXVORA. All Rights Reserved.
+    </p>
+
+</footer>
+
+<!-- =========================================
+BOTTOM NAVIGATION
+========================================= -->
+
+<nav class="bottom-nav">
+
+    <a href="index.html">
+        <i class="fas fa-home"></i>
         <span>Home</span>
-      </a>
-      <a href="#" class="nav-item">
-        <span class="nav-icon">&#9776;</span>
+    </a>
+
+    <a href="categories.html">
+        <i class="fas fa-bars"></i>
         <span>Categories</span>
-      </a>
-      <a href="#" class="nav-item">
-        <span class="nav-icon">&#128722;</span>
+    </a>
+
+    <a href="cart.html">
+        <i class="fas fa-shopping-cart"></i>
         <span>Cart</span>
-      </a>
-      <a href="#" class="nav-item">
-        <span class="nav-icon">&#128100;</span>
+    </a>
+
+    <a href="account.html">
+        <i class="fas fa-user"></i>
         <span>Account</span>
-      </a>
-    </div>
-  </nav>
+    </a>
+
+</nav>
+
+<script src="script.js"></script>
 
 </body>
 </html>
