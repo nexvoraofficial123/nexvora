@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Store</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+  " />
 </head>
 <body>
 
@@ -13,38 +12,34 @@
     Deliver Islandwide
   </div>
 
-  <header class="site-header">
-    <div class="logo">
-      <a href="#">MyStore</a>
+  <header class="top-header">
+    <div class="header-main">
+      <div class="logo">
+        <a href="index.html">MyStore</a>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" placeholder="Search products..." />
+        <button type="button">Search</button>
+      </div>
+
+      <div class="header-actions">
+        <a href="#" class="action-link">Cart</a>
+        <a href="#" class="action-link">Create Account</a>
+      </div>
     </div>
 
-    <button class="menu-toggle" aria-label="Open menu">☰</button>
-
-    <nav class="nav-menu">
-      <a href="#">Home</a>
+    <nav class="bottom-nav">
+      <a href="index.html">Menu</a>
       <a href="#">Shop</a>
-      <a href="#">Categories</a>
       <a href="#">Contact</a>
+      <a href="#">About Us</a>
     </nav>
-
-    <div class="search-bar">
-      <input type="text" placeholder="Search products..." />
-      <button type="button">Search</button>
-    </div>
-
-    <div class="header-actions">
-      <a href="#" class="action-link">Cart</a>
-      <a href="#" class="action-link">Create Account</a>
-    </div>
   </header>
 
-  <script src="script.js"></script>
 </body>
 </html>
 
-  <script src="script.js"></script>
-</body>
-</html>
 * {
   margin: 0;
   padding: 0;
@@ -58,52 +53,43 @@ body {
 }
 
 .announcement-bar {
-  background: #f5e6ff;
-  color: #5a2d82;
+  background: #f4e8ff;
+  color: #5d2f86;
   text-align: center;
   padding: 10px 15px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
-.site-header {
+.top-header {
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.header-main {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   padding: 14px 24px;
-  border-bottom: 1px solid #e5e5e5;
-  background: #fff;
 }
 
 .logo a {
   text-decoration: none;
+  color: #111;
   font-size: 24px;
   font-weight: 700;
-  color: #111;
-}
-
-.nav-menu {
-  display: flex;
-  gap: 18px;
-  align-items: center;
-}
-
-.nav-menu a {
-  text-decoration: none;
-  color: #222;
-  font-weight: 500;
 }
 
 .search-bar {
   display: flex;
   flex: 1;
-  max-width: 420px;
+  max-width: 520px;
 }
 
 .search-bar input {
   width: 100%;
-  padding: 10px 12px;
+  padding: 11px 14px;
   border: 1px solid #ccc;
   border-right: none;
   border-radius: 8px 0 0 8px;
@@ -111,7 +97,7 @@ body {
 }
 
 .search-bar button {
-  padding: 10px 16px;
+  padding: 11px 18px;
   border: 1px solid #ccc;
   background: #111;
   color: #fff;
@@ -121,8 +107,8 @@ body {
 
 .header-actions {
   display: flex;
-  gap: 14px;
   align-items: center;
+  gap: 18px;
 }
 
 .action-link {
@@ -131,48 +117,52 @@ body {
   font-weight: 600;
 }
 
-.menu-toggle {
-  display: none;
-  border: none;
-  background: transparent;
-  font-size: 28px;
-  cursor: pointer;
+.bottom-nav {
+  display: flex;
+  gap: 28px;
+  padding: 12px 24px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.bottom-nav a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 600;
+}
+
+.bottom-nav a:hover,
+.action-link:hover,
+.logo a:hover {
+  opacity: 0.75;
 }
 
 @media (max-width: 900px) {
-  .site-header {
+  .header-main {
     flex-wrap: wrap;
   }
 
   .search-bar {
     order: 3;
+    width: 100%;
     max-width: 100%;
-    width: 100%;
-  }
-
-  .nav-menu {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: 10px;
-  }
-
-  .nav-menu.active {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
   }
 
   .header-actions {
     margin-left: auto;
   }
+
+  .bottom-nav {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
 }
 
 @media (max-width: 600px) {
-  .site-header {
+  .header-main {
+    padding: 12px 16px;
+  }
+
+  .bottom-nav {
     padding: 12px 16px;
   }
 
@@ -181,10 +171,3 @@ body {
     justify-content: space-between;
   }
 }
-const menuToggle = document.querySelector(".menu-toggle");
-const navMenu = document.querySelector(".nav-menu");
-
-menuToggle.addEventListener("click", () => {
-  navMenu.classList.toggle("active");
-});
-
