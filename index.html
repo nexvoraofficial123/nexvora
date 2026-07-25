@@ -4,7 +4,171 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Store</title>
-  " />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #111;
+    }
+
+    .announcement-bar {
+      background: #f4e8ff;
+      color: #5d2f86;
+      text-align: center;
+      padding: 10px 15px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .top-header {
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .header-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 24px;
+    }
+
+    .logo a {
+      text-decoration: none;
+      color: #111;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .search-bar {
+      display: flex;
+      flex: 1;
+      max-width: 520px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid #ccc;
+      border-right: none;
+      border-radius: 8px 0 0 8px;
+      outline: none;
+    }
+
+    .search-bar button {
+      padding: 11px 18px;
+      border: 1px solid #ccc;
+      background: #111;
+      color: #fff;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .action-link {
+      text-decoration: none;
+      color: #111;
+      font-weight: 600;
+    }
+
+    .bottom-nav {
+      display: flex;
+      gap: 28px;
+      padding: 12px 24px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .bottom-nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 600;
+    }
+
+    .bottom-nav a:hover,
+    .action-link:hover,
+    .logo a:hover {
+      opacity: 0.75;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 30px;
+      z-index: 9999;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      opacity: 0.95;
+    }
+
+    @media (max-width: 900px) {
+      .header-main {
+        flex-wrap: wrap;
+      }
+
+      .search-bar {
+        order: 3;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .header-actions {
+        margin-left: auto;
+      }
+
+      .bottom-nav {
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header-main {
+        padding: 12px 16px;
+      }
+
+      .bottom-nav {
+        padding: 12px 16px;
+      }
+
+      .header-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .whatsapp-float {
+        right: 14px;
+        bottom: 14px;
+        width: 52px;
+        height: 52px;
+        font-size: 28px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -37,137 +201,9 @@
     </nav>
   </header>
 
+  <a class="whatsapp-float" href="https://wa.me/94700000000" target="_blank" aria-label="Chat on WhatsApp">
+    &#128172;
+  </a>
+
 </body>
 </html>
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background: #fff;
-  color: #111;
-}
-
-.announcement-bar {
-  background: #f4e8ff;
-  color: #5d2f86;
-  text-align: center;
-  padding: 10px 15px;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.top-header {
-  background: #fff;
-  border-bottom: 1px solid #e8e8e8;
-}
-
-.header-main {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 14px 24px;
-}
-
-.logo a {
-  text-decoration: none;
-  color: #111;
-  font-size: 24px;
-  font-weight: 700;
-}
-
-.search-bar {
-  display: flex;
-  flex: 1;
-  max-width: 520px;
-}
-
-.search-bar input {
-  width: 100%;
-  padding: 11px 14px;
-  border: 1px solid #ccc;
-  border-right: none;
-  border-radius: 8px 0 0 8px;
-  outline: none;
-}
-
-.search-bar button {
-  padding: 11px 18px;
-  border: 1px solid #ccc;
-  background: #111;
-  color: #fff;
-  border-radius: 0 8px 8px 0;
-  cursor: pointer;
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.action-link {
-  text-decoration: none;
-  color: #111;
-  font-weight: 600;
-}
-
-.bottom-nav {
-  display: flex;
-  gap: 28px;
-  padding: 12px 24px;
-  border-top: 1px solid #f0f0f0;
-}
-
-.bottom-nav a {
-  text-decoration: none;
-  color: #222;
-  font-weight: 600;
-}
-
-.bottom-nav a:hover,
-.action-link:hover,
-.logo a:hover {
-  opacity: 0.75;
-}
-
-@media (max-width: 900px) {
-  .header-main {
-    flex-wrap: wrap;
-  }
-
-  .search-bar {
-    order: 3;
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .header-actions {
-    margin-left: auto;
-  }
-
-  .bottom-nav {
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-}
-
-@media (max-width: 600px) {
-  .header-main {
-    padding: 12px 16px;
-  }
-
-  .bottom-nav {
-    padding: 12px 16px;
-  }
-
-  .header-actions {
-    width: 100%;
-    justify-content: space-between;
-  }
-}
