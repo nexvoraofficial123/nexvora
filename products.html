@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXVORA Products</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="announcement-bar">
+    <span class="announce-dot"></span>
+    Island-Wide Delivery 🚚
+    <span class="announce-dot"></span>
+    Cash On Delivery - Money Back Guarantees
+    <span class="announce-dot"></span>
+  </div>
+
+  <header class="top-header" id="mainHeader">
+    <div class="header-inner">
+      <div class="logo-wrap">
+        <a href="index.html" class="logo-link">
+          <img src="images/nex.png" alt="NEXVORA logo" class="logo-img" />
+          <span class="logo-text">NEXVORA</span>
+        </a>
+      </div>
+
+      <div class="search-wrap">
+        <div class="search-bar">
+          <svg class="search-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input id="searchInput" type="text" placeholder="Search products..." autocomplete="off" />
+          <button class="search-btn" id="searchBtn">Search</button>
+        </div>
+        <div class="SearchS-suggestions" id="searchSuggestions"></div>
+      </div>
+
+      <div class="header-actions">
+        <button class="action-btn" id="cartBtn" aria-label="Open cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="badge" id="cartBadge">0</span>
+        </button>
+        <button class="action-btn" aria-label="Wishlist">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <span class="badge" id="wishlistBadge">0</span>
+        </button>
+        <button class="action-btn" aria-label="Account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <nav class="cat-nav">
+      <a href="#" class="cat-link active" data-filter="all">All Products</a>
+      <a href="#" class="cat-link" data-filter="Earbuds">Earbuds</a>
+      <a href="#" class="cat-link" data-filter="Power banks">Power banks</a>
+      <a href="#" class="cat-link" data-filter="USB & Charging Cables">USB & Charging Cables</a>
+      <a href="#" class="cat-link" data-filter="Phone Cases">Phone Cases</a>
+      <a href="#" class="cat-link" data-filter="Camera Accessories">Camera Accessories</a>
+      <a href="#" class="cat-link" data-filter="Phone Holders">Phone Holders</a>
+      <a href="delivery.html" class="cat-link">Delivery Info</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section-wrap" id="products">
+      <div class="section-header">
+        <h2 class="section-title">Search Results</h2>
+        <a href="index.html" class="section-link">Back to Home</a>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+  </main>
+
+  <a href="products.html?q=free+shipping" class="free-shipping-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="1" y="3" width="15" height="13" rx="2"/>
+      <path d="M16 8h4l3 5v4h-7V8z"/>
+      <circle cx="5.5" cy="18.5" r="2.5"/>
+      <circle cx="18.5" cy="18.5" r="2.5"/>
+    </svg>
+    Free Shipping
+  </a>
+
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
