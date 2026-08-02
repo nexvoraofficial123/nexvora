@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delivery Info — NEXVORA Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ---- PAGE-SPECIFIC STYLES ---- */
+    .delivery-hero {
+      background: var(--ink);
+      padding: 72px 28px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .delivery-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.07) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .delivery-hero-content { position: relative; z-index: 1; }
+    .delivery-hero .page-eyebrow {
+      display: inline-block;
+      background: rgba(201,168,76,0.18);
+      color: var(--gold-light);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 5px 16px;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+    .delivery-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+    .delivery-hero h1 em { font-style: italic; color: var(--gold-light); }
+    .delivery-hero p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ZONES GRID */
+    .zones-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .zone-card {
+      background: var(--white);
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      animation: popIn 0.5s ease both;
+    }
+    .zone-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .zone-card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .zone-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .zone-icon svg { width: 24px; height: 24px; }
+    .zone-icon.icon-western  { background: #e8f0fe; color: #1a56db; }
+    .zone-icon.icon-central  { background: #fef3c7; color: #b45309; }
+    .zone-icon.icon-southern { background: #d1fae5; color: #065f46; }
+    .zone-icon.icon-northern { background: #fce7f3; color: #9d174d; }
+    .zone-icon.icon-eastern  { background: #ede9fe; color: #5b21b6; }
+    .zone-icon.icon-uva      { background: #fee2e2; color: #991b1b; }
+
+    .zone-name {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .zone-subtitle {
+      font-size: 12px;
+      color: var(--ink-soft);
+    }
+    .zone-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--cream-dark);
+      font-size: 13.5px;
+    }
+    .zone-row:last-child { border-bottom: none; }
+    .zone-row-label { color: var(--ink-soft); }
+    .zone-row-value { font-weight: 600; color: var(--ink); }
+    .zone-row-value.free { color: #065f46; font-weight: 700; }
+    .zone-row-value.fast { color: #b45309; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 14px; max-width: 780px; margin: 0 auto; }
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 22px;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      background: none;
+      border: none;
+      text-align: left;
+      gap: 12px;
+      transition: background 0.18s;
+    }
+    .faq-q:hover { background: var(--cream); }
+    .faq-chevron {
+      width: 18px; height: 18px;
+      flex-shrink: 0;
+      color: var(--ink-soft);
+      transition: transform 0.3s ease;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0 22px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding: 0 22px 18px;
+    }
+
+    /* CONTACT CTA */
+    .contact-cta {
+      background: var(--gold-pale);
+      border-radius: var(--radius-xl);
+      padding: 56px 40px;
+      text-align: center;
+      border: 1px solid rgba(201,168,76,0.2);
+    }
+    .contact-cta h3 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .contact-cta p {
+      font-size: 15px;
+      color: var(--ink-soft);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .cta-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--green);
+      color: var(--white);
+      padding: 13px 28px;
+      border-radius: var(--radius-xl);
+      font-weight: 600;
+      font-size: 14px;
+      transition: transform 0.18s, box-shadow 0.18s;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+    }
+    .btn-whatsapp svg { width: 18px; height: 18px; }
+
+    /* STEP TIMELINE */
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .step-item {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      position: relative;
+    }
+    .step-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 23px;
+      top: 52px;
+      bottom: -20px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .step-num {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--gold-light);
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(26,26,46,0.2);
+    }
+    .step-body {
+      padding: 10px 0 40px;
+    }
+    .step-body h4 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .step-body p {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .contact-cta { padding: 36px 20px; }
+      .delivery-hero { padding: 56px 16px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar">
+    <span class="announce-dot"></span>
+    Free Island-Wide Delivery on Orders Over Rs. 3,000
+    <span class="announce-dot"></span>
+    Use Code: NEXVORA10 for 10% Off
+    <span class="announce-dot"></span>
+  </div>
+
+  <!-- HEADER -->
+  <header class="top-header" id="mainHeader">
+    <div class="header-inner">
+      <div class="logo-wrap">
+        <a href="index.html" class="logo-link">
+          <img src="images/nex.png" alt="NEXVORA logo" class="logo-img" />
+          <span class="logo-text">NEXVORA</span>
+        </a>
+      </div>
+      <div class="search-wrap">
+        <div class="search-bar">
+          <svg class="search-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input id="searchInput" type="text" placeholder="Search products..." autocomplete="off" />
+          <button class="search-btn" id="searchBtn">Search</button>
+        </div>
+        <div class="SearchS-suggestions" id="searchSuggestions"></div>
+      </div>
+      <div class="header-actions">
+        <a href="index.html" class="action-btn" aria-label="Go to cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+        </a>
+      </div>
+       <!-- CATEGORY NAV -->
+    <nav class="cat-nav">
+      <a href="index.html?category=all#products" class="cat-link active" data-filter="all">All Products</a>
+      <a href="index.html?category=Earbuds#products" class="cat-link" data-filter="Earbuds">Earbuds</a>
+      <a href="index.html?category=Power%20banks#products" class="cat-link" data-filter="Power banks">Power banks</a>
+      <a href="index.html?category=USB%20%26%20Charging%20Cables#products" class="cat-link" data-filter="USB & Charging Cables">USB &amp; Charging Cables</a>
+      <a href="index.html?category=Phone%20Cases#products" class="cat-link" data-filter="Phone Cases">Phone Cases</a>
+      <a href="index.html?category=Camera%20Accessories#products" class="cat-link" data-filter="Camera Accessories">Camera Accessories</a>
+      <a href="index.html?category=Phone%20Holders#products" class="cat-link" data-filter="Phone Holders">Phone Holders</a>
+      <a href="delivery.html" class="cat-link">Delivery Info</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- DELIVERY HERO -->
+    <section class="delivery-hero">
+      <div class="delivery-hero-content">
+        <span class="page-eyebrow">Shipping Policy</span>
+        <h1>Delivery <em>Island-Wide</em></h1>
+        <p>Fast, reliable delivery across all provinces in Sri Lanka. Order before 2pm and your parcel ships the same day.</p>
+      </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <div class="trust-bar">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v4h-7V8z"/>
+          <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+        </svg>
+        <span>All 25 Districts</span>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span>1-3 Day Delivery</span>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span>Secure Packaging</span>
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+        </svg>
+        <span>Easy Returns</span>
+      </div>
+    </div>
+
+    <!-- DELIVERY ZONES -->
+    <section class="section-wrap">
+      <div class="section-header">
+        <h2 class="section-title">Delivery Zones &amp; Rates</h2>
+        <span style="font-size:13px;color:var(--ink-soft)">Updated July 2025</span>
+      </div>
+      <div class="zones-grid">
+
+        <div class="zone-card" style="animation-delay:0s">
+          <div class="zone-card-header">
+            <div class="zone-icon icon-western">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+              </svg>
+            </div>
+            <div>
+              <div class="zone-name">Western Province</div>
+              <div class="zone-subtitle">Colombo, Gampaha, Kalutara</div>
+            </div>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Standard Delivery</span>
+            <span class="zone-row-value">Rs. 200</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Express Delivery</span>
+            <span class="zone-row-value fast">Rs. 400 (Same Day)</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Estimated Time</span>
+            <span class="zone-row-value">1 Business Day</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Free Shipping Above</span>
+            <span class="zone-row-value free">Rs. 3,000</span>
+          </div>
+        </div>
+
+        <div class="zone-card" style="animation-delay:0.07s">
+          <div class="zone-card-header">
+            <div class="zone-icon icon-central">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 17l9-14 9 14H3z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="zone-name">Central Province</div>
+              <div class="zone-subtitle">Kandy, Matale, Nuwara Eliya</div>
+            </div>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Standard Delivery</span>
+            <span class="zone-row-value">Rs. 300</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Express Delivery</span>
+            <span class="zone-row-value fast">Rs. 550</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Estimated Time</span>
+            <span class="zone-row-value">1-2 Business Days</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Free Shipping Above</span>
+            <span class="zone-row-value free">Rs. 3,000</span>
+          </div>
+        </div>
+
+        <div class="zone-card" style="animation-delay:0.14s">
+          <div class="zone-card-header">
+            <div class="zone-icon icon-southern">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                <path d="M12 8v4l3 3"/>
+              </svg>
+            </div>
+            <div>
+              <div class="zone-name">Southern Province</div>
+              <div class="zone-subtitle">Galle, Matara, Hambantota</div>
+            </div>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Standard Delivery</span>
+            <span class="zone-row-value">Rs. 350</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Express Delivery</span>
+            <span class="zone-row-value fast">Rs. 600</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Estimated Time</span>
+            <span class="zone-row-value">1-2 Business Days</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Free Shipping Above</span>
+            <span class="zone-row-value free">Rs. 3,000</span>
+          </div>
+        </div>
+
+        <div class="zone-card" style="animation-delay:0.21s">
+          <div class="zone-card-header">
+            <div class="zone-icon icon-northern">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/>
+              </svg>
+            </div>
+            <div>
+              <div class="zone-name">Northern Province</div>
+              <div class="zone-subtitle">Jaffna, Kilinochchi, Mannar</div>
+            </div>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Standard Delivery</span>
+            <span class="zone-row-value">Rs. 450</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Express Delivery</span>
+            <span class="zone-row-value fast">Rs. 750</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Estimated Time</span>
+            <span class="zone-row-value">2-3 Business Days</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Free Shipping Above</span>
+            <span class="zone-row-value free">Rs. 4,500</span>
+          </div>
+        </div>
+
+        <div class="zone-card" style="animation-delay:0.28s">
+          <div class="zone-card-header">
+            <div class="zone-icon icon-eastern">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+            <div>
+              <div class="zone-name">Eastern Province</div>
+              <div class="zone-subtitle">Trincomalee, Batticaloa, Ampara</div>
+            </div>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Standard Delivery</span>
+            <span class="zone-row-value">Rs. 400</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Express Delivery</span>
+            <span class="zone-row-value fast">Rs. 700</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Estimated Time</span>
+            <span class="zone-row-value">2-3 Business Days</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Free Shipping Above</span>
+            <span class="zone-row-value free">Rs. 4,000</span>
+          </div>
+        </div>
+
+        <div class="zone-card" style="animation-delay:0.35s">
+          <div class="zone-card-header">
+            <div class="zone-icon icon-uva">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+              </svg>
+            </div>
+            <div>
+              <div class="zone-name">Uva &amp; Sabaragamuwa</div>
+              <div class="zone-subtitle">Badulla, Monaragala, Ratnapura, Kegalle</div>
+            </div>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Standard Delivery</span>
+            <span class="zone-row-value">Rs. 350</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Express Delivery</span>
+            <span class="zone-row-value fast">Rs. 600</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Estimated Time</span>
+            <span class="zone-row-value">2-3 Business Days</span>
+          </div>
+          <div class="zone-row">
+            <span class="zone-row-label">Free Shipping Above</span>
+            <span class="zone-row-value free">Rs. 3,500</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section-wrap" style="background:var(--white);margin:0;max-width:100%;padding:64px 0">
+      <div style="max-width:1280px;margin:0 auto;padding:0 28px">
+        <div class="section-header" style="justify-content:center;text-align:center;margin-bottom:48px">
+          <h2 class="section-title">How Your Order Gets to You</h2>
+        </div>
+        <div class="steps-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Place Your Order</h4>
+              <p>Add items to your cart and complete your order via WhatsApp. Our team confirms your order within 30 minutes during business hours (8am - 8pm).</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Order Packed &amp; Dispatched</h4>
+              <p>Orders placed before 2pm are dispatched the same day. We use premium packaging to ensure your items arrive in perfect condition.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Track Your Parcel</h4>
+              <p>You will receive a WhatsApp message with your tracking number once your parcel is with the courier. Track it in real time via their portal.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>Delivery at Your Door</h4>
+              <p>Your courier will contact you before arrival. We support cash on delivery (COD) and bank transfer payments island-wide.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section-wrap">
+      <div class="section-header" style="justify-content:center;text-align:center;margin-bottom:36px">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list" id="faqList">
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Do you offer Cash on Delivery (COD)?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="faq-a">Yes, we offer Cash on Delivery island-wide. You pay the courier directly when your parcel arrives. Bank transfers are also accepted — contact us on WhatsApp to confirm before dispatch.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            What happens if I miss my delivery?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="faq-a">The courier will attempt delivery twice. If both attempts fail, the parcel will be held at the nearest courier hub for 3 business days. After that it will be returned to us — contact us immediately to re-arrange delivery.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Can I change my delivery address after ordering?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="faq-a">Yes, but only before the parcel is dispatched. Contact us via WhatsApp as soon as possible with your order number and new address. Once dispatched, we cannot change the delivery address.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            How do I return or exchange an item?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="faq-a">We accept returns within 7 days of delivery for items that are unused and in original packaging. Message us on WhatsApp with your order number and photos of the item. Return courier fees are covered by us for faulty items.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            Is shipping available island-wide?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="faq-a">Free shipping thresholds vary by Speical days.Above Rs. 4,000 qualify for free delivery.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            How do I track my order?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="faq-a">Once dispatched, you will receive a WhatsApp message with your courier tracking number. You can use this to track your parcel directly on the courier's website. You can also contact us on WhatsApp for a status update at any time.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section class="section-wrap" style="padding-top:0">
+      <div class="contact-cta">
+        <h3>Still Have Questions?</h3>
+        <p>Our team is available 7 days a week from 8am to 8pm.<br />Chat with us directly on WhatsApp for instant answers.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/94700000000" target="_blank" rel="noopener" class="btn-whatsapp">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.522 5.845L0 24l6.335-1.502A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.802 9.802 0 0 1-5.003-1.368l-.357-.213-3.758.891.944-3.67-.233-.376A9.803 9.803 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/>
+            </svg>
+            Chat on WhatsApp
+          </a>
+          <a href="index.html" class="btn-primary">
+            Continue Shopping
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+
+  <!-- WHATSAPP FLOAT -->
+  <a class="whatsapp-float" href="https://wa.me/94700000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.522 5.845L0 24l6.335-1.502A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.802 9.802 0 0 1-5.003-1.368l-.357-.213-3.758.891.944-3.67-.233-.376A9.803 9.803 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/>
+    </svg>
+  </a>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav-bar">
+    <a href="index.html" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+      <span>Home</span>
+    </a>
+    <a href="products.html" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+        <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+      </svg>
+      <span>Categories</span>
+    </a>
+    <a href="index.html" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 0 1-8 0"/>
+      </svg>
+      <span>Cart</span>
+    </a>
+    <a href="delivery.html" class="bottom-nav-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v4h-7V8z"/>
+        <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+      </svg>
+      <span>Delivery</span>
+    </a>
+    <a href="#" class="bottom-nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+      </svg>
+      <span>Account</span>
+    </a>
+  </nav>
+
+  <script>
+    /* FAQ ACCORDION */
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    /* STICKY HEADER SHADOW */
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+      if (!header) return;
+      header.style.boxShadow = window.scrollY > 10 ? '0 4px 20px rgba(26,26,46,0.10)' : '';
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
