@@ -317,25 +317,40 @@ img { display: block; max-width: 100%; }
   overflow: hidden;
   width: 100%;
   position: relative;
+  padding: 4px 0 6px;
 }
 
 .special-track {
   display: flex;
   gap: 16px;
   width: max-content;
-  animation: specialScroll 25s linear infinite;
+  animation: specialScroll 18s linear infinite;
   will-change: transform;
 }
 
 .special-card {
   flex: 0 0 280px;
   text-decoration: none;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid rgba(201,168,76,0.18);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.special-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 
 .special-carousel:hover .special-track {
   animation-play-state: paused;
 }
 
+@keyframes specialHook {
+  0%, 100% { transform: translateY(0); box-shadow: 0 0 0 rgba(201, 168, 76, 0.12); }
+  50% { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(201, 168, 76, 0.18); }
+}
 @keyframes specialScroll {
   from {
     transform: translateX(0);
@@ -1523,9 +1538,7 @@ img { display: block; max-width: 100%; }
   .special-offers { padding: 24px 16px 30px; }
   .special-carousel { overflow: hidden; }
   .special-track {
-    width: 100%;
-    animation: none;
-    transform: none !important;
+    animation: specialScroll 16s linear infinite;
   }
   .special-card {
     flex: 0 0 calc(82vw - 4px);
