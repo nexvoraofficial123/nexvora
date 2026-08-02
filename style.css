@@ -1500,15 +1500,15 @@ img { display: block; max-width: 100%; }
 @media (max-width: 768px) {
   .bottom-nav-bar { display: flex; }
   .announcement-bar { gap: 8px; font-size: 11px; }
-  .header-inner { padding: 10px 16px; flex-wrap: wrap; }
-  .search-wrap { order: 3; min-width: 100%; }
-  .header-actions { margin-left: 0; width: 100%; }
+  .header-inner { padding: 10px 16px; flex-wrap: nowrap; align-items: center; }
+  .search-wrap { order: 0; min-width: 0; max-width: 100%; flex: 1; }
+  .header-actions { margin-left: auto; width: auto; flex: 1; }
   .cat-nav { padding: 0 16px; }
   .section-wrap { padding: 44px 16px; }
   .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
   .category-grid { grid-template-columns: repeat(2, 1fr); }
-  .trust-bar { gap: 0; flex-wrap: wrap; }
-  .trust-item { padding: 12px 18px; font-size: 12px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .trust-bar { gap: 0; flex-wrap: nowrap; }
+  .trust-item { padding: 10px 12px; font-size: 11px; border-right: none; border-bottom: none; }
   .trust-item:last-child { border-bottom: none; }
   .hero-stats {
     gap: 20px;
@@ -1534,7 +1534,7 @@ img { display: block; max-width: 100%; }
   .hero-title { font-size: clamp(34px, 10vw, 44px); }
   .hero-sub { font-size: 14px; }
   .trust-item span { display: none; }
-  .trust-item { padding: 14px; }
+  .trust-item { padding: 10px; }
   .special-offers { padding: 24px 16px 30px; }
   .special-carousel { overflow: hidden; }
   .special-track {
