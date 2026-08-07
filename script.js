@@ -1558,7 +1558,7 @@ function renderCartSidebar() {
 
   const checkoutBtn = document.getElementById('cartCheckoutBtn');
   if (checkoutBtn)
-    checkoutBtn.href = 'https://wa.me/94700000000?text=' + encodeURIComponent('Hi! I would like to order:\n\n' + msg);
+    checkoutBtn.href = 'https://wa.me/94702231620?text=' + encodeURIComponent('Hi! I would like to order:\n\n' + msg);
 }
 
 /* ------ OPEN / CLOSE CART ------ */
