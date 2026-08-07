@@ -1398,7 +1398,7 @@ function bindProductModalEvents(p) {
       `Delivery fee: ${formatPrice(delivery.fee)}`,
       `Total: ${formatPrice(total)}`
     ].join('\n');
-    window.open('https://wa.me/94700000000?text=' + encodeURIComponent(message), '_blank');
+    window.open('https://wa.me/94702231620?text=' + encodeURIComponent(message), '_blank');
     showToast('Opening WhatsApp with order details');
     closeProductModal();
   });
