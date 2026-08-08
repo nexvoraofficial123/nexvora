@@ -1129,6 +1129,34 @@ function getDeliveryOption(id) {
   return DELIVERY_OPTIONS.find(opt => opt.id === id) || DELIVERY_OPTIONS[0];
 }
 
+function validateDetailStateForCheckout(p) {
+  if (!detailState) return false;
+
+  const requiredChecks = [];
+  const color = String(detailState.color || '').trim();
+  const size = String(detailState.size || '').trim();
+  const address = String(detailState.address || '').trim();
+  const name = String(detailState.name || '').trim();
+  const phone = String(detailState.phone || '').trim();
+  const payment = String(detailState.payment || '').trim();
+  const delivery = String(detailState.delivery || '').trim();
+
+  if (!color) requiredChecks.push('color');
+  if (!size) requiredChecks.push('size');
+  if (!payment) requiredChecks.push('payment method');
+  if (!delivery) requiredChecks.push('delivery option');
+  if (!address) requiredChecks.push('delivery address');
+  if (!name) requiredChecks.push('customer name');
+  if (!phone) requiredChecks.push('phone number');
+
+  if (requiredChecks.length) {
+    showToast('Please complete: ' + requiredChecks.join(', '));
+    return false;
+  }
+
+  return true;
+}
+
 function createProductModal() {
   let modal = document.getElementById('productModal');
   if (modal) return modal;
@@ -1161,7 +1189,9 @@ function openProductDetails(id) {
     payment: (Array.isArray(p.payments) && p.payments[0]) || 'cod',
     address: '',
     name: '',
-    phone: ''
+    phone: '',
+    email: '',
+    offersOptIn: false
   };
   const modal = createProductModal();
   modal.innerHTML = productDetailHTML(p);
@@ -1272,6 +1302,16 @@ function productDetailHTML(p) {
                 <input id="detailPhone" name="phone" type="tel" placeholder="+94 7XXXXXXXX" />
               </div>
               <div class="form-row">
+                <label for="detailEmail">Email address</label>
+                <input id="detailEmail" name="email" type="email" placeholder="you@example.com" />
+              </div>
+              <div class="form-row offer-optin-row">
+                <label class="offer-optin">
+                  <input id="detailOffersOptIn" name="offersOptIn" type="checkbox" />
+                  <span>I would like to receive NEXVORA offers</span>
+                </label>
+              </div>
+              <div class="form-row">
                 <div class="product-detail-group-label">Payment method</div>
                 <div class="product-payment-group">${paymentOptions}</div>
               </div>
@@ -1306,6 +1346,8 @@ function bindProductModalEvents(p) {
   const addressInput = modal.querySelector('#detailAddress');
   const nameInput = modal.querySelector('#detailName');
   const phoneInput = modal.querySelector('#detailPhone');
+  const emailInput = modal.querySelector('#detailEmail');
+  const offersOptInInput = modal.querySelector('#detailOffersOptIn');
   const deliveryOptions = modal.querySelectorAll('input[name="detailDelivery"]');
   const galleryList = modal.querySelector('.product-gallery-list');
 
@@ -1351,6 +1393,8 @@ function bindProductModalEvents(p) {
   addressInput?.addEventListener('input', event => { detailState.address = event.target.value; });
   nameInput?.addEventListener('input', event => { detailState.name = event.target.value; });
   phoneInput?.addEventListener('input', event => { detailState.phone = event.target.value; });
+  emailInput?.addEventListener('input', event => { detailState.email = event.target.value; });
+  offersOptInInput?.addEventListener('change', event => { detailState.offersOptIn = !!event.target.checked; });
 
   galleryList?.addEventListener('click', event => {
     const thumb = event.target.closest('.product-gallery-thumb');
@@ -1365,6 +1409,8 @@ function bindProductModalEvents(p) {
   });
 
   addCartBtn?.addEventListener('click', () => {
+    if (!validateDetailStateForCheckout(p)) return;
+
     const opts = {
       color: detailState.color,
       size: detailState.size,
@@ -1372,35 +1418,34 @@ function bindProductModalEvents(p) {
       address: detailState.address,
       payment: detailState.payment,
       name: detailState.name,
-      phone: detailState.phone
+      phone: detailState.phone,
+      email: detailState.email,
+      offersOptIn: detailState.offersOptIn
     };
     addToCart(p.id, detailState.qty, opts);
     closeProductModal();
+    showToast('Added to cart');
   });
 
   form?.addEventListener('submit', event => {
     event.preventDefault();
-    const delivery = getDeliveryOption(detailState.delivery);
-    const subtotal = p.price * detailState.qty;
-    const total = subtotal + (delivery.fee * detailState.qty);
-    const message = [
-      `Hello NEXVORA, I would like to place an order:`,
-      `${p.name} x${detailState.qty}`,
-      `Color: ${detailState.color}`,
-      `Size: ${detailState.size}`,
-      `Delivery: ${delivery.label}`,
-      `Payment: ${detailState.payment}`,
-      `Address: ${detailState.address || 'Not provided'}`,
-      `Name: ${detailState.name || 'Not provided'}`,
-      `Phone: ${detailState.phone || 'Not provided'}`,
-      ``,
-      `Subtotal: ${formatPrice(subtotal)}`,
-      `Delivery fee: ${formatPrice(delivery.fee)}`,
-      `Total: ${formatPrice(total)}`
-    ].join('\n');
-    window.open('https://wa.me/94702231620?text=' + encodeURIComponent(message), '_blank');
-    showToast('Opening WhatsApp with order details');
+    if (!validateDetailStateForCheckout(p)) return;
+
+    const opts = {
+      color: detailState.color,
+      size: detailState.size,
+      delivery: detailState.delivery,
+      address: detailState.address,
+      payment: detailState.payment,
+      name: detailState.name,
+      phone: detailState.phone,
+      email: detailState.email,
+      offersOptIn: detailState.offersOptIn
+    };
+
+    addToCart(p.id, detailState.qty, opts);
     closeProductModal();
+    showToast('Added to cart');
   });
 }
 
@@ -1492,7 +1537,8 @@ function renderCartSidebar() {
     const p = PRODUCTS.find(x => x.id === item.id);
     if (!p) return '';
     const opts = item.options || {};
-    const deliveryFee = opts.delivery ? (getDeliveryOption(opts.delivery)?.fee || 0) : 0;
+    const delivery = getDeliveryOption(opts.delivery);
+    const deliveryFee = delivery ? delivery.fee : 0;
     const lineSubtotal = p.price * item.qty;
     const lineTotal = lineSubtotal + (deliveryFee * item.qty);
     total += lineTotal;
@@ -1501,6 +1547,11 @@ function renderCartSidebar() {
     if (opts.color) details.push(`Color: ${opts.color}`);
     if (opts.size) details.push(`Size: ${opts.size}`);
     if (opts.payment) details.push(`Payment: ${opts.payment}`);
+    if (opts.delivery) details.push(`Delivery: ${delivery ? delivery.label : opts.delivery}`);
+    if (opts.name) details.push(`Name: ${opts.name}`);
+    if (opts.phone) details.push(`Phone: ${opts.phone}`);
+    if (opts.email) details.push(`Email: ${opts.email}`);
+    details.push(`Offers: ${opts.offersOptIn ? 'Yes' : 'No'}`);
 
     return `
       <div class="cart-row" data-id="${p.id}" data-idx="${idx}">
@@ -1518,8 +1569,8 @@ function renderCartSidebar() {
             <button class="qty-btn" data-action="inc" data-id="${p.id}" data-idx="${idx}">+</button>
           </div>
           ${details.length ? `<div class="cart-row-details">${details.join(' • ')}</div>` : ''}
-          ${opts.address ? `<div class="cart-row-address">${opts.address}</div>` : ''}
-          <div class="cart-row-delivery">Delivery: ${formatPrice(deliveryFee)} each</div>
+          ${opts.address ? `<div class="cart-row-address">Address: ${opts.address}</div>` : ''}
+          <div class="cart-row-delivery">Delivery fee: ${formatPrice(deliveryFee)} each</div>
           <div class="cart-row-line-total">Line total: ${formatPrice(lineTotal)}</div>
         </div>
         <button class="cart-row-remove" data-id="${p.id}" data-idx="${idx}" aria-label="Remove">
@@ -1537,28 +1588,77 @@ function renderCartSidebar() {
   if (totalEl) totalEl.textContent = formatPrice(total);
   if (footerEl) footerEl.style.display = 'block';
 
-  // Build WhatsApp order message including options and delivery
-  const msg = cart.map(item => {
+  // Build a full WhatsApp order message from the saved cart options and line details.
+  const shopperName = cart
+    .map(item => (item.options || {}).name)
+    .find(name => name && String(name).trim()) || 'Not provided';
+  const shopperPhone = cart
+    .map(item => (item.options || {}).phone)
+    .find(phone => phone && String(phone).trim()) || 'Not provided';
+  const shopperAddress = cart
+    .map(item => (item.options || {}).address)
+    .find(address => address && String(address).trim()) || 'Not provided';
+
+  const messageLines = [
+    'Hello NEXVORA, I would like to place an order:',
+    '',
+    'Customer details:',
+    `Name: ${shopperName}`,
+    `Phone: ${shopperPhone}`,
+    `Address: ${shopperAddress}`,
+    '',
+    'Order details:'
+  ];
+
+  cart.forEach(item => {
     const p = PRODUCTS.find(x => x.id === item.id);
-    if (!p) return '';
+    if (!p) return;
+
     const opts = item.options || {};
-    const deliveryFee = opts.delivery ? (getDeliveryOption(opts.delivery)?.fee || 0) : 0;
+    const delivery = getDeliveryOption(opts.delivery);
+    const deliveryFee = delivery ? delivery.fee : 0;
     const lineSubtotal = p.price * item.qty;
     const lineTotal = lineSubtotal + (deliveryFee * item.qty);
-    const lines = [];
-    lines.push(`${p.name} x${item.qty} - ${formatPrice(lineSubtotal)}`);
-    if (opts.color) lines.push(`Color: ${opts.color}`);
-    if (opts.size) lines.push(`Size: ${opts.size}`);
-    if (opts.payment) lines.push(`Payment: ${opts.payment}`);
-    if (opts.address) lines.push(`Address: ${opts.address}`);
-    lines.push(`Delivery fee: ${formatPrice(deliveryFee)} each`);
-    lines.push(`Line total: ${formatPrice(lineTotal)}`);
-    return lines.join('\n');
-  }).filter(Boolean).join('\n\n') + `\n\nTotal: ${formatPrice(total)}`;
+
+    messageLines.push('');
+    messageLines.push(`${p.name} x${item.qty}`);
+    messageLines.push(`Price: ${formatPrice(p.price)} each`);
+    messageLines.push(`Color: ${opts.color || 'Not provided'}`);
+    messageLines.push(`Size: ${opts.size || 'Not provided'}`);
+    messageLines.push(`Payment: ${opts.payment || 'Not provided'}`);
+    messageLines.push(`Delivery: ${delivery ? delivery.label : 'Not provided'}`);
+    messageLines.push(`Address: ${opts.address || 'Not provided'}`);
+    messageLines.push(`Customer name: ${opts.name || 'Not provided'}`);
+    messageLines.push(`Phone: ${opts.phone || 'Not provided'}`);
+    messageLines.push(`Email: ${opts.email || 'Not provided'}`);
+    messageLines.push(`NEXVORA offers opt-in: ${opts.offersOptIn ? 'Yes' : 'No'}`);
+    messageLines.push(`Subtotal: ${formatPrice(lineSubtotal)}`);
+    messageLines.push(`Delivery fee: ${formatPrice(deliveryFee)} each`);
+    messageLines.push(`Line total: ${formatPrice(lineTotal)}`);
+  });
+
+  messageLines.push('');
+  messageLines.push(`Order total: ${formatPrice(total)}`);
+
+  const msg = messageLines.join('\n');
 
   const checkoutBtn = document.getElementById('cartCheckoutBtn');
-  if (checkoutBtn)
-    checkoutBtn.href = 'https://wa.me/94702231620?text=' + encodeURIComponent('Hi! I would like to order:\n\n' + msg);
+  if (checkoutBtn) {
+    checkoutBtn.href = 'https://wa.me/94702231620?text=' + encodeURIComponent(msg);
+
+    checkoutBtn.onclick = event => {
+      event.preventDefault();
+      if (!cart.length) {
+        showToast('Your cart is empty');
+        return;
+      }
+
+      const orderUrl = checkoutBtn.href;
+      window.open(orderUrl, '_blank');
+      showToast('Your order has been sent successfully');
+      closeCart();
+    };
+  }
 }
 
 /* ------ OPEN / CLOSE CART ------ */
@@ -1574,18 +1674,6 @@ function closeCart() {
 }
 
 /* ------ ADD TO CART ------ */
-function addToCart(id, qty = 1) {
-  if (qty <= 0) return;
-  const existing = cart.find(i => i.id === id);
-  if (existing) existing.qty += qty;
-  else cart.push({ id, qty });
-  saveCart();
-  updateBadges();
-  renderCartSidebar();
-  const p = PRODUCTS.find(x => x.id === id);
-  showToast((p ? p.name : 'Item') + ` x${qty} added to cart`);
-}
-
 function addToCart(id, qty = 1, options = {}) {
   if (qty <= 0) return;
   const key = JSON.stringify(options || {});
@@ -1595,6 +1683,7 @@ function addToCart(id, qty = 1, options = {}) {
   saveCart();
   updateBadges();
   renderCartSidebar();
+  openCart();
   const p = PRODUCTS.find(x => x.id === id);
   showToast((p ? p.name : 'Item') + ` x${qty} added to cart`);
 }
@@ -1815,11 +1904,8 @@ function initProductEvents() {
       const card     = e.target.closest('.product-card[data-id]');
       if (addBtn) {
         const pid = parseInt(addBtn.dataset.id);
-        // On special.html open product modal to collect options before adding
-        if (window.location.pathname.includes('special')) {
+        if (!Number.isNaN(pid)) {
           openProductDetails(pid);
-        } else {
-          addToCart(pid);
         }
         return;
       }
