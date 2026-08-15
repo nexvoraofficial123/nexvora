@@ -679,7 +679,7 @@ img { display: block; max-width: 100%; }
     rgba(9, 12, 24, 0.45) 65%,
     rgba(9, 12, 24, 0.20) 100%
   ),
-  url("image/HERO%20(2).png");
+  url("image/HERO.png");
 
 background-size: cover;
 background-position: right center;
