@@ -1040,36 +1040,36 @@ background-repeat: no-repeat;
 .cat-card p { font-size: 12px; color: rgba(255,255,255,0.7); }
 
 .cat-earbuds {
-  background-image: url("images/categories/earbudcate.jpg");
+  background-image: url("image/images/categories/earbudcate.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .cat-powerbank {
-  background-image: url("powerbankcate.jpg");
+  background-image: url("image/images/categories/powerbankcate.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .cat-cables {
-  background-image: url("https://github.com/nexvoraofficial123/nexvora/blob/main/image/images/categories/cablescate.jpg");
+  background-image: url("image/images/categories/cablescate.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .cat-phonecases {
-  background-image: url("phonecasecate.jpg");
+  background-image: url("image/images/categories/phonecasecate.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .cat-cameras {
-  background-image: url("cameraacccate.jpg");
+  background-image: url("image/images/categories/cameraacccate.jpg");
   background-size: cover;
   background-position: center;
 }
 .cat-holders {
-  background-image: url("phoneholders.jpg");
+  background-image: url("image/images/categories/phoneholders.jpg");
   background-size: cover;
   background-position: center;
 }
