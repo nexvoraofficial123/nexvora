@@ -659,7 +659,7 @@ img { display: block; max-width: 100%; }
 /* ---------- HERO ---------- */
 .hero {
   position: relative;
-  min-height: =620px;
+  min-height: 620px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -668,23 +668,36 @@ img { display: block; max-width: 100%; }
   overflow: hidden;
   padding: 60px 24px 36px;
 }
+
 .hero-bg {
   position: absolute;
   inset: 0;
-  background:
-  linear-gradient(
-    90deg,
-    rgba(9, 12, 24, 0.96) 0%,
-    rgba(9, 12, 24, 0.88) 38%,
-    rgba(9, 12, 24, 0.45) 65%,
-    rgba(9, 12, 24, 0.20) 100%
-  ),
-  url("image/images/categories/HERO.jpg");
-
-background-size: cover;
-background-position: right center;
-background-repeat: no-repeat;
   z-index: 0;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(9, 12, 24, 0.65) 0%,
+      rgba(9, 12, 24, 0.45) 40%,
+      rgba(9, 12, 24, 0.20) 70%,
+      rgba(9, 12, 24, 0.10) 100%
+    ),
+    url("image/images/categories/HERO.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-grid,
+.hero-orb,
+.grain-overlay {
+  z-index: 1;
+}
+
+.hero-content,
+.hero-stats {
+  z-index: 2;
 }
 .hero-grid {
   position: absolute;
