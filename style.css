@@ -1826,7 +1826,7 @@ img { display: block; max-width: 100%; }
   .promo-content h2 {
     font-size: clamp(32px, 10vw, 44px);
   }
-}
+
 /* =========================================
    PRODUCT DETAIL - CHECKBOX & PAYMENT FIX
    ========================================= */
