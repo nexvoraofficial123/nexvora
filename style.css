@@ -1828,7 +1828,7 @@ img { display: block; max-width: 100%; }
       rgba(26, 26, 46, 0.35) 50%,
       rgba(26, 26, 46, 0.20) 100%
     ),
-    url("images/bannerad.jpg");
+    url("image/bannerad.jpg");
 
   background-size: cover;
   background-position: center center;
@@ -1873,7 +1873,7 @@ img { display: block; max-width: 100%; }
         rgba(26, 26, 46, 0.50) 0%,
         rgba(26, 26, 46, 0.70) 100%
       ),
-      url("images/bannerad.jpg");
+      url("image/bannerad.jpg");
 
     background-size: cover;
     background-position: center;
