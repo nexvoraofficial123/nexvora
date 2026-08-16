@@ -1820,7 +1820,7 @@ img { display: block; max-width: 100%; }
         rgba(26, 26, 46, 0.86) 0%,
         rgba(26, 26, 46, 0.94) 100%
       ),
-      url("images/promo-banner.jpg");
+      url("image/bannerad.jpg");
   }
 
   .promo-content h2 {
