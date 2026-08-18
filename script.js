@@ -945,13 +945,13 @@ const PRODUCTS = [
     price: 2150, oldPrice: 2850,
     badge: 'sale', rating: 4.4, reviews: 77,
     colors: ['Black', 'White', 'Blue'],
-    image: 'images/products/phoneholders/PH 1.webp',
+    image: 'image/products/phoneholders/PH 1.webp',
     description: 'A versatile LED ring light with 2 phone holders for optimal photography.',
     gallery: [
-     'images/products/phoneholders/PH 6.webp',
-      'images/products/phoneholders/PH 3.webp',
-      'images/products/phoneholders/PH 2.webp',
-      'images/products/phoneholders/PH 5.webp'
+     'image/products/phoneholders/PH 6.webp',
+      'image/products/phoneholders/PH 3.webp',
+      'image/products/phoneholders/PH 2.webp',
+      'image/products/phoneholders/PH 5.webp'
     ]
   },
   {
