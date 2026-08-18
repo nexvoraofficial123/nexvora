@@ -912,7 +912,7 @@ img { display: block; max-width: 100%; }
   padding: 64px 28px;
 }
 .section-header {
-  display: flex;
+  display: flex;s
   align-items: flex-end;
   justify-content: space-between;
   margin-bottom: 36px;
@@ -2146,4 +2146,324 @@ img { display: block; max-width: 100%; }
     width: 64px;
     height: 64px;
   }
+}
+/* ================================
+   SPECIAL OFFER HERO IMAGE
+================================ */
+
+.special-hero {
+  position: relative;
+  min-height: 620px;
+
+  background-image: url("images/bannerad.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.special-hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.82) 0%,
+      rgba(0, 0, 0, 0.58) 42%,
+      rgba(0, 0, 0, 0.18) 100%
+    );
+}
+
+.special-hero .hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(1200px, 92%);
+  margin: 0 auto;
+
+  padding: 80px 0;
+}
+
+.special-hero .hero-eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  color: #00aeef;
+}
+
+.special-hero .hero-title {
+  max-width: 700px;
+  margin: 0 0 20px;
+
+  font-size: clamp(42px, 6vw, 78px);
+  line-height: 0.98;
+  font-weight: 700;
+
+  color: #fff;
+}
+
+.special-hero .hero-sub {
+  max-width: 550px;
+  margin: 0 0 32px;
+
+  font-size: 18px;
+  line-height: 1.7;
+
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.special-hero .hero-cta-group {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* MOBILE */
+@media (max-width: 640px) {
+
+  .special-hero {
+    min-height: 540px;
+    background-position: center;
+  }
+
+  .special-hero .hero-content {
+    padding: 60px 20px;
+  }
+
+  .special-hero .hero-title {
+    font-size: clamp(38px, 11vw, 55px);
+  }
+
+  .special-hero .hero-sub {
+    font-size: 16px;
+  }
+
+}
+/* =====================================================
+   NEXVORA MODERN SOCIAL MEDIA
+===================================================== */
+
+.top-header .header-inner {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.top-header .logo-wrap {
+  flex: 0 0 auto !important;
+}
+
+
+/* SOCIAL CONTAINER */
+
+.nexvora-social {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+
+  margin-left: 28px !important;
+  margin-right: 28px !important;
+
+  flex-shrink: 0 !important;
+
+  position: relative !important;
+  z-index: 9999 !important;
+}
+
+
+/* ALL BUTTONS */
+
+.nexvora-social a {
+  width: 38px !important;
+  height: 38px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border-radius: 50% !important;
+
+  text-decoration: none !important;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease !important;
+}
+
+
+/* ICON */
+
+.nexvora-social svg {
+  width: 22px !important;
+  height: 22px !important;
+
+  display: block !important;
+}
+
+
+/* =====================================================
+   TIKTOK
+===================================================== */
+
+.social-tiktok {
+  background: #000 !important;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,.35) !important;
+}
+
+
+/* =====================================================
+   FACEBOOK
+===================================================== */
+
+.social-facebook {
+  background: #1877F2 !important;
+
+  box-shadow:
+    0 4px 12px rgba(24,119,242,.35) !important;
+}
+
+
+/* =====================================================
+   INSTAGRAM
+===================================================== */
+
+.social-instagram {
+  background: #fff !important;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,.18) !important;
+}
+
+
+/* =====================================================
+   YOUTUBE
+===================================================== */
+
+.social-youtube {
+  background: #fff !important;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,.18) !important;
+}
+
+
+/* =====================================================
+   HOVER
+===================================================== */
+
+.nexvora-social a:hover {
+  transform: translateY(-3px) scale(1.08) !important;
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.top-header .header-actions {
+  margin-left: auto !important;
+  flex-shrink: 1 !important;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 800px) {
+
+  .nexvora-social {
+    gap: 7px !important;
+
+    margin-left: 12px !important;
+    margin-right: 12px !important;
+  }
+
+  .nexvora-social a {
+    width: 33px !important;
+    height: 33px !important;
+  }
+
+  .nexvora-social svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+}
+/* =====================================================
+   SPECIAL.HTML ONLY
+   INFINITE SPECIAL PRODUCTS CAROUSEL
+===================================================== */
+
+.special-carousel {
+  width: 100%;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.special-track {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  width: max-content !important;
+  gap: 16px !important;
+
+  animation: specialOnlyMove 45s linear infinite !important;
+
+  will-change: transform;
+}
+
+.special-track .special-card {
+  flex: 0 0 280px !important;
+  width: 280px !important;
+  margin: 0 !important;
+}
+
+
+/* Smooth movement */
+@keyframes specialOnlyMove {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+
+}
+
+
+/* Pause when customer points at it */
+.special-carousel:hover .special-track {
+  animation-play-state: paused !important;
+}
+
+
+/* Mobile */
+@media (max-width: 700px) {
+
+  .special-track {
+    gap: 12px !important;
+    animation-duration: 38s !important;
+  }
+
+  .special-track .special-card {
+    flex: 0 0 240px !important;
+    width: 240px !important;
+  }
+
 }
