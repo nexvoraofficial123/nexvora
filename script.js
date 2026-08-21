@@ -1034,7 +1034,7 @@ const PRODUCTS = [
     price: 5250, oldPrice:4750,
     badge: 'new', rating: 6.6, reviews: 101,
     colors: ['White'],
-    image: 'image/products/earbuds/AIR5 001.webp',
+    image: 'image/products/earbuds/AIR5 01.jpg',
     description: 'Up to 30% off with Free delivery  Enjoy your podcasts and music without interruption on your daily travels.',
     gallery: [
       'image/products/earbuds/AIR5 01.jpg',
