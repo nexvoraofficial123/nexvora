@@ -1034,12 +1034,12 @@ const PRODUCTS = [
     price: 5250, oldPrice:4750,
     badge: 'new', rating: 6.6, reviews: 101,
     colors: ['White'],
-    image: 'image/products/earbuds/AIR5 001.webp',
-    description: 'Up to 30% off,  Enjoy your podcasts and music without interruption on your daily travels.',
+    image: 'image/products/earbuds/AIR5001.webp',
+    description: 'Up to 30% off with Free delivery  Enjoy your podcasts and music without interruption on your daily travels.',
     gallery: [
-      'image/products/earbuds/AIR5 01.jpg',
-      'image/products/earbuds/AIR5 1.webp',
-      'image/products/earbuds/AIR5 2.jpg',
+      'image/products/earbuds/AIR501.jpg',
+      'image/products/earbuds/AIR51.webp',
+      'image/products/earbuds/AIR52.jpg',
       'image/products/earbuds/AIR5D.jpg'
     ]
   },
