@@ -395,7 +395,7 @@ img { display: block; max-width: 100%; }
 }
 .special-price {
   display: block;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--ink);
 }
 
@@ -691,7 +691,7 @@ img { display: block; max-width: 100%; }
       rgba(9, 12, 24, 0.25) 70%,
       rgba(9, 12, 24, 0.12) 100%
     ),
-    url("image/categories/HERO.jpg");
+    url("nex.png");
 
   background-size: cover;
   background-position: center center;
@@ -1076,36 +1076,36 @@ img { display: block; max-width: 100%; }
 .cat-card p { font-size: 12px; color: rgba(255,255,255,0.7); }
 
 .cat-earbuds {
-  background-image: url("image/images/categories/earbudcate.jpg");
+  background-image: url("images/categories/earbudcate.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .cat-powerbank {
-  background-image: url("image/images/categories/powerbankcate.jpg");
+  background-image: url("images/categories/powerbankcate.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .cat-cables {
-  background-image: url("image/images/categories/cablescate.jpg");
+  background-image: url("images/categories/cablescate.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .cat-phonecases {
-  background-image: url("image/images/categories/phonecasecate.jpg");
+  background-image: url("images/categories/phonecasecate.jpg");
   background-size: cover;
   background-position: center;
 }
 
 .cat-cameras {
-  background-image: url("image/images/categories/cameraacccate.jpg");
+  background-image: url("images/categories/cameraacccate.jpg");
   background-size: cover;
   background-position: center;
 }
 .cat-holders {
-  background-image: url("image/images/categories/phoneholders.jpg");
+  background-image: url("images/categories/phoneholders.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -1129,7 +1129,7 @@ img { display: block; max-width: 100%; }
       rgba(26, 26, 46, 0.80) 50%,
       rgba(26, 26, 46, 0.52) 100%
     ),
-    url("image/bannerad.jpg");
+    url("nex.png");
 
   background-size: cover;
   background-position: center;
@@ -1771,7 +1771,7 @@ img { display: block; max-width: 100%; }
       rgba(9, 12, 24, 0.20) 70%,
       rgba(9, 12, 24, 0.10) 100%
     ),
-    url("image/images/categories/HERO.jpg");
+    url("images/12.png");
 
   background-size: cover;
   background-position: center center;
@@ -1839,7 +1839,7 @@ img { display: block; max-width: 100%; }
       rgba(26, 26, 46, 0.35) 50%,
       rgba(26, 26, 46, 0.20) 100%
     ),
-    url("image/bannerad.jpg");
+    url("nnnn.jpeg");
 
   background-size: cover;
   background-position: center center;
@@ -1884,7 +1884,7 @@ img { display: block; max-width: 100%; }
         rgba(26, 26, 46, 0.50) 0%,
         rgba(26, 26, 46, 0.70) 100%
       ),
-      url("image/bannerad.jpg");
+      url("nex.png");
 
     background-size: cover;
     background-position: center;
@@ -2521,7 +2521,7 @@ body {
       rgba(10, 12, 25, 0.68) 45%,
       rgba(10, 12, 25, 0.40) 100%
     ),
-    url("images/special-hero.jpg");
+    url("nex.png");
 
   background-size: cover;
   background-position: center;
@@ -2617,7 +2617,7 @@ body {
         rgba(10, 12, 25, 0.60) 0%,
         rgba(10, 12, 25, 0.78) 100%
       ),
-      url("images/special-hero.jpg");
+      url("images/logo.main.jpeg");
 
     background-position: center center;
   }
@@ -2650,7 +2650,7 @@ body {
         rgba(10, 12, 25, 0.55) 0%,
         rgba(10, 12, 25, 0.86) 100%
       ),
-      url("images/special-hero.jpg");
+      url("images/logo.main.jpeg");
 
     background-size: cover;
 
