@@ -2521,7 +2521,7 @@ body {
       rgba(10, 12, 25, 0.68) 45%,
       rgba(10, 12, 25, 0.40) 100%
     ),
-    url("nex.png");
+    url("images/coverspecial.jpeg");
 
   background-size: cover;
   background-position: center;
@@ -2634,7 +2634,6 @@ body {
     font-size: 15px;
   }
 }
-
 /* =========================================================
    MOBILE
    ========================================================= */
