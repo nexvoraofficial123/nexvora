@@ -368,7 +368,7 @@ const PRODUCTS = [
   },
   
   {
-    id: 62, name: 'Plokama Live K8 Selfie Stick Bluetooth Remort  ',
+    id: 62, name: 'Plokama Live K8 Selfie Stick Bluetooth Remote  ',
     category: 'Camera Accessories',
     price: 1850, oldPrice: 2500,
     badge: 'OFFER', rating: 4.4, reviews: 77,
