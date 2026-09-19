@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nexvoraofficial123.github.io/nexvora/sitemap.xml
